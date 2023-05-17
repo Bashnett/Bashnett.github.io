@@ -44,7 +44,7 @@ main {
 }
 
 .content {
-    max-width: 3900px;
+    max-width: 900px;
     margin: 1 auto;
     text-align: left;
 }
@@ -67,6 +67,7 @@ footer p {
     background-color: #3e0707;
     height: 100%;
     position: absolute;
+    left: calc(100% / 3);
     height: calc(100vh - 20px);
     left: 600px;
     top: 0;
