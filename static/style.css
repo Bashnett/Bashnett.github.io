@@ -33,10 +33,6 @@
     margin-right: 0px;
   }
 
-.navbar{
-    text-align: left;
-    margin-left: 10px;
-}
 
 main {
     grid-area: main;
@@ -51,9 +47,10 @@ main {
 
 footer {
 	background-color:papayawhip;
-	color: #ffffffe4;
+	color: #161414c7;
 	padding: 10px;
 	text-align: center;
+    grid-column: 1 / span 2;
 }
 
 footer p {
