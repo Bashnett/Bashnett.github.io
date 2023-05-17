@@ -1,0 +1,72 @@
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: papayawhip;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas: 
+        "sidebar main"
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-area: sidebar;
+    padding: 50px;
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 2rem;
+    color: #333;
+}
+
+.logo-image {
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    object-fit: cover;
+    margin-right: 0px;
+  }
+
+.navbar{
+    text-align: left;
+    margin-left: 10px;
+}
+
+main {
+    grid-area: main;
+    padding: 40px;
+}
+
+.content {
+    max-width: 3900px;
+    margin: 1 auto;
+    text-align: left;
+}
+
+footer {
+	background-color:papayawhip;
+	color: #ffffffe4;
+	padding: 10px;
+	text-align: center;
+}
+
+footer p {
+	margin: 0;
+	font-size: 1.2rem;
+}
+
+  
+.sidebar-line {
+    width: 10px;
+    background-color: #3e0707;
+    height: 100%;
+    position: absolute;
+    left: 600px;
+    top: 0;
+}
