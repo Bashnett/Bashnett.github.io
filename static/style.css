@@ -60,14 +60,3 @@ footer p {
 	margin: 0;
 	font-size: 1.2rem;
 }
-
-  
-.sidebar-line {
-    width: 10px;
-    background-color: #3e0707;
-    height: 100%;
-    left: calc(100% / 3);
-    height: calc(100vh - 20px);
-    left: 600px;
-    top: 0;
-}
