@@ -16,7 +16,7 @@
     flex-direction: column;
     align-items: center;
     grid-area: sidebar;
-    padding: 50px;
+    padding: 20px;
 }
 
 .logo h1 {
@@ -36,11 +36,11 @@
 
 main {
     grid-area: main;
-    padding: 40px;
+    padding: 20px;
 }
 
 .content {
-    max-width: 900px;
+    max-width: 100%;
     margin: 1 auto;
     text-align: left;
 }
