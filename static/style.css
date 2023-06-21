@@ -64,11 +64,16 @@ main {
 }
 
 .navtitle:hover{
-  color: #222831;
+  color: darkred;
 }
 
 
 .navtitle{
   margin-bottom: 10px;
   font-size: 15px;
+  margin-left:30px;
+  background-color:#222831;
+  color:white;
+  border-color: black;
+  text-align: center;
 }
