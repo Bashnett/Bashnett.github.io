@@ -70,10 +70,10 @@ main {
 
 .navtitle{
   margin-bottom: 10px;
-  font-size: 17px;
+  font-size: 19px;
   margin-left:30px;
   background-color:#222831;
   color:darkgray;
-  border-color: black;
+  border-color: transparent;
   text-align: center;
 }
