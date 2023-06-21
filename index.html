@@ -1,39 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>basher</title>
-  <link rel="stylesheet" href="/static/style.css">
-  <link rel="icon" href="/static/unnamed.png" type="image/x-icon">
-  <link rel="shortcut icon" href="/static/unnamed.png" type="image/x-icon">
-</head>
-<body>
-  <header>
-  <div class="one">
-    <div class="logo">
-      <h1>basher</h1>
-      <img src="/static/1.png" alt="Profile Picture" class="logo-image">
-    </div>
-    <nav>
-      <ul class="navbar">
-        <li><a class="navtitle" href="writeups.html"><strong>Bug Writeups (All my Reports)</strong></a></li><br>
-        <li><a class="navtitle" href="CTF.html"><strong>CTFs (Capture the Flags Walkthrough)</strong></a></li><br>
-        <li><a class="navtitle" href="boxes.html"><strong>Vulnerable Boxes<br>
-        (Vulnerable Box Walkthroughs from HTB,<br> Vulnhub etc.)</a></strong></li><br>
-        <li><a class="navtitle" href="archive.html"><strong>Archives</strong></a></li>
-      </ul>
-    </nav>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <div class="footer">
-      <p><a href="https://www.youtube.com/@basher-36"><img src="/static/youtube.svg"><i class="fa fa-youtube"></i></a>
-        <a href="https://twitter.com/bashERR36"><img src="/static/twitter.svg"><i class="fa fa-twitter"></i></a>
-        <a href="https://github.com/Bashnett"><img src="/static/github.svg"><i class="fa fa-github"></i></a><br>Copyright &copy; 2023 Anish Basnet</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>basher</title>
+    <link rel="stylesheet" href="/anishbashnet.github.io/static/style.css" />
+    <link rel="icon" href="static/unnamed.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="static/unnamed.png" type="image/x-icon" />
+  </head>
+  <body>
+    <header>
+      <div class="one">
+        <div class="logo">
+          <h1>basher</h1>
+          <img
+            src="/anishbashnet.github.io/static/1.png"
+            alt="Profile Picture"
+            class="logo-image"
+          />
+        </div>
+        <nav>
+          <ul class="navbar">
+            <li>
+              <button class="navtitle c">
+                <strong>Home</strong>
+              </button>
+            </li>
+            <br />
+            <li>
+              <button class="navtitle w">
+                <strong>Bug Writeups (All my Reports)</strong>
+              </button>
+            </li>
+            <br />
+            <li>
+              <button class="navtitle c">
+                <strong>CTFs (Capture the Flags Walkthrough)</strong>
+              </button>
+            </li>
+            <br />
+            <li>
+              <button class="navtitle b">
+                <strong
+                  >Vulnerable Boxes<br />
+                  (Vulnerable Box Walkthroughs from HTB,<br />
+                  Vulnhub etc.)</strong
+                >
+              </button>
+            </li>
+            <br />
+            <li>
+              <button class="navtitle a"><strong>Archives</strong></button>
+            </li>
+          </ul>
+        </nav>
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        <div class="footer">
+          <p>
+            <a href="https://www.youtube.com/@basher-36"
+              ><img src="/anishbashnet.github.io/static/youtube.svg" /><i
+                class="fa fa-youtube"
+              ></i
+            ></a>
+            <a href="https://twitter.com/bashERR36"
+              ><img src="/anishbashnet.github.io/static/twitter.svg" /><i
+                class="fa fa-twitter"
+              ></i
+            ></a>
+            <a href="https://github.com/Bashnett"
+              ><img src="/anishbashnet.github.io/static/github.svg" /><i
+                class="fa fa-github"
+              ></i></a
+            ><br />Copyright &copy; 2023 Anish Basnet
+          </p>
+        </div>
       </div>
-  </div>
-  </header>
-  <main>
-    <section class="content">
+    </header>
+    <main class="contains">
+      <section class="content">
+        <h1>Welcome to my Offensive Blogs</h1>
+        <P>&ensp;&ensp;You can find Bug Report writeups, Boxes walkthrough and information about me in here.</P>
+        <br>
+        <h3>About me</h3>
+        <p>
+          &ensp;&ensp;My name is <strong>Anish Basnet</strong>. I am a Security Researcher with a strong background in testing Network and  Web applications. Throughout the past two months, I have focused on performing vulnerability assessments on many companies through their bug bounty program.
+        </p>
+        <br>
+        <p style="font-size: 22px">
+          <span class="has-inline-color has-white-color"><strong>Skills</strong></span>
+        </p>
+        <p>
+          <ul>
+            <li>Blackbox security testing of Web applications and Web APIs.</li>
+            <li>Linux System Administration.</li>
+            <li>Network Security Vulnerability Assessment</li>
+            <li>Coding in Javascript, Python with basic knowledge of Flask and Shell programming with Bash.</li>
+            <li>Working and security knowledge of Linux and Windows.</li>
+            <li>Proficient in English and Nepali languages.</li>
+          </ul>
+        </p>
+        <br>
+        <h2>Discover</h2>
+        <div>
+          <iframe width="560" height="315" src='https://www.youtube.com/embed/mYGATOADlbY' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
+          <iframe width="560" height="315" src='https://www.youtube.com/embed/RrpaWe5FLY0' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
+        </div>
+      </section>
+    </main>
+    <script>
+      var num = document.querySelectorAll(".navtitle").length;
+
+      for (var i = 0; i < num; i++) {
+        document
+          .querySelectorAll("button")
+          [i].addEventListener("click", function () {
+            var a = this.innerText.slice(0, 1);
+            console.log(a);
+            display(a);
+          });
+      }
+      function display(hoe) {
+        switch (hoe) {
+          case "H":
+            document.querySelector(
+              ".contains"
+            ).innerHTML = `<section class="content">
       <h1>Welcome to my Offensive Blogs</h1>
       <P>&ensp;&ensp;You can find Bug Report writeups, Boxes walkthrough and information about me in here.</P>
       <br>
@@ -61,7 +152,53 @@
         <iframe width="560" height="315" src='https://www.youtube.com/embed/mYGATOADlbY' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
         <iframe width="560" height="315" src='https://www.youtube.com/embed/RrpaWe5FLY0' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
       </div>
+    </section>`;
+            break;
+          case "V":
+            document.querySelector(".contains").innerHTML = `
+      <section class="content">
+      <h1>Vulnerable Boxes</h1>
+      <p style="font-size: 22px">
+        <span class="has-inline-color has-white-color"><strong>Video Walkthrough</strong></span>
+      </p>
+      <div>
+        <iframe width="560" height="315" src='https://www.youtube.com/embed/mYGATOADlbY' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
+        <iframe width="560" height="315" src='https://www.youtube.com/embed/RrpaWe5FLY0' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
+        <iframe width="560" height="315" src='https://www.youtube.com/embed/eMo6yBfw06Y' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
+    </div>
     </section>
-  </main>
-</body>
+      `;
+      break;
+      case "C":
+        document.querySelector(".contains").innerHTML=`
+        <section class="content">
+      <p style="font-size: 22px">
+        <span class="has-inline-color has-white-color"><strong>CTFs</strong></span>
+      <div>
+        <iframe width="560" height="315" src='https://www.youtube.com/embed/gMIbIAKJ75s' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
+        </div>
+    </section>`;
+    break;
+    case "B":
+        document.querySelector(".contains").innerHTML=`
+        <section class="content">
+      <h1>Bug Bounty Report Writeups</h1>
+      <p style="font-size: 22px">
+        <span class="has-inline-color has-white-color">Will be Updated after Findings..</span>
+      </p>
+    </section>`;
+        break;
+    case "A":
+        document.querySelector(".contains").innerHTML=`
+        <section class="content">
+      <h1>ARCHIVE</h1>
+      <p style="font-size: 22px">
+        <span class="has-inline-color has-white-color">Will be Updated..</span>
+      </p>
+    </section>`;
+        break;
+        }
+      }
+    </script>
+  </body>
 </html>

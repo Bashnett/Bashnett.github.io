@@ -2,7 +2,8 @@
   body {
     margin: 0;
     padding: 0;
-    background-color: papayawhip;
+    background-color:#222831;
+    color: white;
     font-size: 18px;
     font-family: Arial, sans-serif;
     display: grid;
@@ -21,7 +22,7 @@
 .logo h1 {
     margin: 0;
     font-size: 2rem;
-    color: #333;
+    color: white;
 }
 
 .logo-image {
@@ -49,8 +50,8 @@ main {
 }
 
 .footer {
-	background-color:papayawhip;
-	color: #161414c7;
+	background-color:#222831;
+	color: white;
 	margin-left: 100px;
 	text-align: center;
   grid-column: 1 / span 2;
@@ -63,6 +64,6 @@ main {
 }
 
 .navtitle:hover{
-  color: black;
+  color: #222831;
 }
   
