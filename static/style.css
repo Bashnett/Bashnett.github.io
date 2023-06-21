@@ -66,4 +66,12 @@ main {
 .navtitle:hover{
   color: #222831;
 }
+
+.navtitle{
+  margin-bottom: 20px;
+  font-size: 17px;
+  color: white;
+  border-color: red;
+  background-color: #222831;
+}
   
