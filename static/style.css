@@ -125,13 +125,12 @@ main {
   .footer {
     background-color:#222831;
     color: white;
-    margin: 60px;
-    margin-top: 640px;
+    margin-right: 76px;
+    margin-bottom: 0rem;
     text-align: center
     bottom: 0px;
-    margin-left: 0px;
+    margin-left: 0rem;
     padding:0px;
-    position: relative;
     }
     
     .footer p {
