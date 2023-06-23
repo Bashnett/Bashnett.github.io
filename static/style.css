@@ -82,7 +82,7 @@ main {
   body {
     background-color: black;
     color: darkgray;
-    font-size: 10px;
+    font-size: 14px;
     font-family: Arial, sans-serif;
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -120,7 +120,7 @@ main {
   }
   .navtitle{
     position: relative;
-    font-size: 10px;
+    font-size: 16px;
   }
   .footer {
     background-color:#222831;
