@@ -5,7 +5,6 @@ var num = document.querySelectorAll(".navtitle").length;
           .querySelectorAll("button")
           [i].addEventListener("click", function () {
             var a = this.innerText.slice(0, 1);
-            console.log(a);
             display(a);
           });
       }
