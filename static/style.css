@@ -16,7 +16,6 @@
     margin-left: 20px;
     grid-area: sidebar;
     padding: 50px;
-    margin-right: px;
 }
 
 .logo h1 {
@@ -39,7 +38,7 @@
 
 main {
     grid-area: main;
-    padding: 10px;
+    min-width: 600px;
 }
 
 .content {
