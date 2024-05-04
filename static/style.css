@@ -1,5 +1,4 @@
-
-  body {
+body {
     margin: 0;
     padding: 0;
     background-color:#222831;
@@ -7,15 +6,16 @@
     font-size: 18px;
     font-family: Arial, sans-serif;
     display: grid;
-    grid-template-columns: 3fr 7fr;
+    grid-template-columns: 1fr 2fr;
     grid-template-areas: 
         "sidebar main"
 }
 
 .logo {
-    margin-left: 80px;
+    margin-left: 150px;
     grid-area: sidebar;
     padding: 50px;
+    margin-right: px;
 }
 
 .logo h1 {
@@ -38,7 +38,7 @@
 
 main {
     grid-area: main;
-    min-width: 600px;
+    padding: 10px;
 }
 
 .content {
