@@ -81,12 +81,13 @@ var num = document.querySelectorAll(".navtitle").length;
       </p>
     </section>`;
         break;
-    case "A":
+    case "W":
         document.querySelector(".contains").innerHTML=`
         <section class="content">
-      <h1>ARCHIVE</h1>
+      <h1>Web-Sacrifice</h1>
       <p style="font-size: 22px">
-        <span class="has-inline-color has-white-color">Will be Updated..</span>
+        <span class="has-inline-color has-white-color">Web-acrifice is Intentional Vulnerable Web-Application features labs for vulnerabilities like XSS, CSRF, SQLi, NOSQLi and Broken Authentication Vulnerabilities.
+        < br/>You can get it from here:<a href="https://github.com/Bashnett/WEBSACRIFICE">Web-Sacrifice</a></span>
       </p>
     </section>`;
         break;
