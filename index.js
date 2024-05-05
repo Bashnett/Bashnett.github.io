@@ -21,7 +21,7 @@ var num = document.querySelectorAll(".navtitle").length;
         &ensp;&ensp;My name is <strong>Anish Basnet</strong>. I am a Security Researcher with a strong background in testing Network and  Web applications. I am focusing on performing Web-Application penetration testing on many companies through their bug bounty program.
       </p>
       <p style="font-size: 22px">
-        <span class="has-inline-color has-white-color"><strong>Skills</strong></span>
+        <h2>Skills</h2>
         <ul>
             <li>Vulnerability Assessment and Penetration Testing of WebApplication and Network System.</li>
             <li>Linux System Administration.</li>
