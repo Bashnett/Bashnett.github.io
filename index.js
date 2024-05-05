@@ -18,7 +18,7 @@ var num = document.querySelectorAll(".navtitle").length;
       <P>&ensp;&ensp;You can find Bug Report writeups, Boxes walkthrough and information about me in here.</P>
       <h3>About me</h3>
       <p>
-        &ensp;&ensp;My name is <strong>Anish Basnet</strong>. I am a Security Researcher with a strong background in testing Network and  Web applications. Throughout the past two months, I have focused on performing vulnerability assessments on many companies through their bug bounty program.
+        &ensp;&ensp;My name is <strong>Anish Basnet</strong>. I am a Security Researcher with a strong background in testing Network and  Web applications. I am focusing on performing Web-Application penetration testing on many companies through their bug bounty program.
       </p>
       <p style="font-size: 22px">
         <span class="has-inline-color has-white-color"><strong>Skills</strong></span>
