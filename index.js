@@ -16,16 +16,12 @@ var num = document.querySelectorAll(".navtitle").length;
             ).innerHTML = `<section class="content">
       <h1>Welcome to my Offensive Blogs</h1>
       <P>&ensp;&ensp;You can find Bug Report writeups, Boxes walkthrough and information about me in here.</P>
-      <br>
       <h3>About me</h3>
       <p>
         &ensp;&ensp;My name is <strong>Anish Basnet</strong>. I am a Security Researcher with a strong background in testing Network and  Web applications. Throughout the past two months, I have focused on performing vulnerability assessments on many companies through their bug bounty program.
       </p>
-      <br>
       <p style="font-size: 22px">
         <span class="has-inline-color has-white-color"><strong>Skills</strong></span>
-      </p>
-      <p>
         <ul>
             <li>Vulnerability Assessment and Penetration Testing of WebApplication and Network System.</li>
             <li>Linux System Administration.</li>
