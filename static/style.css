@@ -98,7 +98,13 @@ main {
     grid-area: sidebar;
     padding: 5px;
   }
-  
+	
+   .title {
+    margin-left: 13px;
+    font-size: 14px;
+    color: darkkhaki;
+  }
+	
   .logo h1 {
     margin: 0;
     font-size: 1rem;
