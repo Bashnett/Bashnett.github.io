@@ -5,6 +5,7 @@ var num = document.querySelectorAll(".navtitle").length;
           .querySelectorAll("button")
           [i].addEventListener("click", function () {
             var a = this.innerText.slice(0, 1);
+            console.log(a);
             display(a);
           });
       }
@@ -14,7 +15,7 @@ var num = document.querySelectorAll(".navtitle").length;
             document.querySelector(
               ".contains"
             ).innerHTML = `<section class="content">
-      <h1>Welcome to my Offensive Blogs</h1>
+      <h1>Welcome to my Security Blogs</h1>
       <P>&ensp;&ensp;You can find Bug Report writeups, Boxes walkthrough and information about me in here.</P>
       <h3>About me</h3>
       <p>
@@ -24,6 +25,7 @@ var num = document.querySelectorAll(".navtitle").length;
         <h2>Skills</h2>
         <ul>
             <li>Vulnerability Assessment and Penetration Testing of WebApplication and Network System.</li>
+            <li>API Penetration Testing.</li>
             <li>Linux System Administration.</li>
             <li>Coding in Javascript and Python</li> 
             <li>Proficient in Bash and Powershell.</li>
@@ -34,8 +36,8 @@ var num = document.querySelectorAll(".navtitle").length;
       </p>
       <h2>Discover</h2>
       <div>
-        <iframe width="500" height="355" src='https://www.youtube.com/embed/mYGATOADlbY' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
-        <iframe width="500" height="355" src='https://www.youtube.com/embed/RrpaWe5FLY0' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
+        <iframe width="600" height="355" src='https://www.youtube.com/embed/mYGATOADlbY' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
+        <iframe width="600" height="355" src='https://www.youtube.com/embed/RrpaWe5FLY0' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
       </div>
     </section>`;
             break;

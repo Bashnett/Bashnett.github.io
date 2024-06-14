@@ -14,8 +14,12 @@ body {
 .logo {
     margin-left: 150px;
     grid-area: sidebar;
-    padding: 50px;
-    margin-right: px;
+    padding-top: 30px;
+}
+
+.title {
+  margin-left: 130px;
+  color: darkkhaki;
 }
 
 .logo h1 {
@@ -25,8 +29,8 @@ body {
 }
 
 .logo-image {
-    height: 100px;
-    width: 100px;
+    height: 200px;
+    width: 200px;
     border-radius: 100%;
     object-fit: cover;
     margin-right: 0px;
