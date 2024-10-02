@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color:#222831;
+    background-color:#27282b;
     color: darkgray;
     font-size: 18px;
     font-family: Arial, sans-serif;
@@ -12,7 +12,7 @@ body {
 }
 
 .logo {
-    margin-left: 150px;
+    margin-left: 115px;
     grid-area: sidebar;
     padding-top: 30px;
 }
@@ -53,7 +53,7 @@ main {
 }
 
 .footer {
-	background-color:#222831;
+	background-color:#27282b;
 	color: white;
 	margin-left: 100px;
 	text-align: center;
@@ -81,7 +81,7 @@ main {
   text-align: center;
 }
 
-@media (max-width: 1627px) {
+@media (max-width: 767px) {
   body {
     background-color: black;
     color: darkgray;
@@ -98,13 +98,13 @@ main {
     grid-area: sidebar;
     padding: 5px;
   }
-	
-   .title {
+  
+  .title {
     margin-left: 13px;
     font-size: 14px;
     color: darkkhaki;
   }
-	
+
   .logo h1 {
     margin: 0;
     font-size: 1rem;
@@ -146,4 +146,44 @@ main {
     margin: 0;
     font-size: 0.5rem;
     }
+}
+
+/**writeups style **/
+.writeup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.writeup-box {
+  width: 80%;
+  padding: 20px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  transition: transform 0.2s;
+}
+
+.writeup-box:hover {
+  transform: scale(1.05);
+}
+
+.writeup-box a {
+  text-decoration: none;
+  color: #333;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.writeup-box a:hover {
+  color: #007acc;
+}
+
+.writeup-box p {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #666;
 }

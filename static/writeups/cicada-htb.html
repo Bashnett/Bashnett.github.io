@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pwned-Box 1 Writeup: Vulnerable Windows Machine</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="icon" href="/static/unnamed.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="/static/unnamed.png" type="image/x-icon" />
+    <style>
+      .writeup-container {
+        max-width: 1100px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #1e2027;
+        color: darkgrey;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+      }
+
+
+      p {
+        margin-bottom: 20px;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        margin: 20px 0;
+      }
+
+      pre {
+        background-color: #140909;
+        padding: 10px;
+        border-left: 5px solid #007acc;
+        overflow-x: auto;
+        margin: 20px 0;
+      }
+
+      code {
+        color: #d63384;
+      }
+
+      .step-title {
+        color: #007acc;
+        margin-top: 40px;
+      }
+
+      blockquote {
+        border-left: 5px solid #007acc;
+        padding-left: 10px;
+        font-style: italic;
+        color: #cc1a1a;
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="one">
+        <div class="logo">
+          <img
+            src="/static/1.png"
+            alt="Profile Picture"
+            class="logo-image"
+          />
+        </div>
+        <h1 class="title">Anish Basnet</h1>
+        </br>
+        <nav class="navbar">
+          <ul>
+              <button class="navtitle c">
+                <strong>Home</strong>
+              </button>
+              <br><br />
+              <button class="navtitle b">
+                <strong
+                  >Vulnerable Boxes & CTF Walkthrough<br />
+                  </strong
+                >
+              </button>
+              <br><br />
+              <button class="navtitle a">
+                <strong>Pwned-Box Writeups</strong>
+              </button>
+              <br><br />
+          </ul>
+        </nav>
+        <br /><br /><br />
+        <div class="footer">
+          <p>
+            <a href="https://www.youtube.com/@basher-36"
+              ><img src="/static/youtube.svg" /><i
+                class="fa fa-youtube"
+              ></i
+            ></a>
+            <a href="https://twitter.com/bashERR36"
+              ><img src="/static/twitter.svg" /><i
+                class="fa fa-twitter"
+              ></i
+            ></a>
+            <a href="https://github.com/Bashnett"
+              ><img src="/static/github.svg" /><i
+                class="fa fa-github"
+              ></i></a
+            ><br />Copyright &copy; 2023 Anish Basnet
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <main class="contains">
+      <section class="content">
+        <div class="writeup-container">
+          <h1>Cicada Write-up(HacktheBox)</h1>
+          <h3>Author: Anish Basnet</h3>
+          <p>
+            This writeup covers the exploitation of a vulnerable Windows
+            machine, detailing the steps to discover and exploit
+            misconfigurations to gain unauthorized access.
+          </p>
+
+          <h2 class="step-title">Step 1: Reconnaissance</h2>
+          <p>
+            The first step involves gathering as much information as possible
+            using tools like <code>nmap</code> for port scanning and
+            enumeration.
+          </p>
+
+          <pre><code>
+$ nmap -sC -sV -oN initial_scan.txt 10.10.10.10
+        </code></pre>
+
+          <p>
+            This scan reveals several open ports, including port 445 (SMB),
+            which will be the target for this attack.
+          </p>
+
+          <img src="/static/smb_scan_results.png" alt="Nmap Scan Results" />
+
+          <h2 class="step-title">Step 2: Exploiting SMB</h2>
+          <p>
+            With port 445 open, we try to enumerate shares using the
+            <code>enum4linux</code> tool:
+          </p>
+          <pre><code>
+$ enum4linux -a 10.10.10.10
+        </code></pre>
+
+          <p>
+            We discover a shared directory with sensitive information. We access
+            this share and find a file containing the username and password for
+            the machine.
+          </p>
+
+          <blockquote>
+            "Successful enumeration and exploitation often come down to
+            identifying weakly secured services."
+          </blockquote>
+
+          <h2 class="step-title">Step 3: Gaining Access</h2>
+          <p>
+            Using the credentials found, we attempt to log into the machine via
+            SMB:
+          </p>
+          <pre><code>
+$ smbclient \\\\10.10.10.10\\share -U user
+        </code></pre>
+
+          <img src="/static/smb_access.png" alt="SMB Access" />
+
+          <p>
+            With access to the machine, we can now escalate privileges and gain
+            full control of the system.
+          </p>
+
+          <h2 class="step-title">Step 4: Privilege Escalation</h2>
+          <p>
+            After gaining initial access, we run privilege escalation scripts
+            such as <code>winPEAS</code> to identify potential vectors for
+            privilege escalation. A misconfigured service is identified,
+            allowing us to escalate privileges to the administrator account.
+          </p>
+
+          <pre><code>
+$ winPEAS.exe
+        </code></pre>
+
+          <h3>Conclusion</h3>
+          <p>
+            This writeup demonstrates the importance of securing services like
+            SMB and ensuring proper access controls on shared directories.
+            Enumeration is key to exploiting vulnerabilities, and the entire
+            process highlights how attackers can chain small misconfigurations
+            into a full compromise.
+          </p>
+        </div>
+      </section>
+    </main>
+    <script src="../../index.js"></script>
+  </body>
+</html>
