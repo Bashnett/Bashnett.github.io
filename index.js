@@ -19,19 +19,16 @@ var num = document.querySelectorAll(".navtitle").length;
       <P>&ensp;&ensp;You can find Bug Report writeups, Boxes walkthrough and information about me in here.</P>
       <h3>About me</h3>
       <p>
-        &ensp;&ensp;My name is <strong>Anish Basnet</strong>. I am a Security Researcher with a strong background in testing Network and  Web applications. I am focusing on performing Web-Application penetration testing on many companies through their bug bounty program.
+        &ensp;&ensp;My name is <strong>Anish Basnet</strong>. I am a Security Researcher with a strong background in testing Network and  Web applications.
       </p>
       <p style="font-size: 22px">
         <h2>Skills</h2>
         <ul>
-            <li>Vulnerability Assessment and Penetration Testing of WebApplication and Network System.</li>
-            <li>API Penetration Testing.</li>
-            <li>Linux System Administration.</li>
-            <li>Coding in Javascript and Python</li> 
-            <li>Proficient in Bash and Powershell.</li>
-            <li>Active Directory security audit.</li>
-            <li>Working and security knowledge of Linux and Windows.</li>
-            <li>Proficient in English and Nepali languages.</li>
+            <li>Blackbox security testing of Web-application and WebAPIs OWASP TOP TEN vulnerabilities.</li>
+            <li>Network service penetration testing, including testing of Active Directory, SMTP, FTP and other network protocols. Focused on identifying misconfigurations, privilege escalation, and weak access controls.</li>
+            <li>Linux Server Administration focusing on secure configurations, patch management, and monitoring for performance and security.</li>
+            <li>Hands on experience with many tools like Metasploit, Nmap, Netexec, Burpsuite & many others for network and WebApplication Assessment.</li>
+            <li>Proficient in Python, Bash, and JavaScript for automating tasks, creating security tools, and developing scripts for vulnerability testing and server management.</li>
         </ul>
       </p>
       <h2>Discover</h2>
