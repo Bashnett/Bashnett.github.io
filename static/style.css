@@ -79,17 +79,17 @@ main {
 
 @media (max-width: 767px) {
   body {
-    display: block;
+    display: flex;
     background-color: #27282b;
     font-size: 12px;
 }
 
 .one {
     position: relative;
-    width: 100%;
+    width: 90%;
     text-align: center;
     margin: 0;
-    padding: 0px;
+    padding: 10px;
 }
 
 .logo {
@@ -97,12 +97,12 @@ main {
 }
 
 .logo-image {
-    height: 100px;
-    width: 100px;
+    height: 50px;
+    width: 50px;
 }
 
 .title {
-    font-size: 16px;
+    font-size: 12px;
     margin-top: 10px;
 }
 
@@ -111,17 +111,18 @@ main {
 }
 
 .navbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 90%;
-  text-align: justify;
-  position: relative;
-    padding: 0px;
+  padding: 0px;
 }
 
 .navtitle {
     width: 100%;
     text-align: left;
-    font-size: 14px;
-    padding: 10px 0;
+    font-size: 12px;
+    padding: 0px 0;
 }
 
 main {
@@ -130,12 +131,48 @@ main {
 
 .content {
     margin-left: 0;
-    max-width: 100%;
+    max-width: 90%;
     text-align: center;
 }
 
 .footer {
   display:none;
+}
+
+/**writeups style for mobile**/
+.writeup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.writeup-box {
+  width: 100%;
+  padding: 20px;
+  color:silver;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background-color: #27282b;
+}
+
+.writeup-box a {
+  text-decoration: none;
+  color: skyblue;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.writeup-box a:hover {
+  color: yellowgreen;
+}
+
+.writeup-box p {  
+  margin: 0px 0;
+  font-size: 10px;
+  color: darkgrey;
 }
 }
 
