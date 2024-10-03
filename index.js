@@ -20,7 +20,7 @@ var num = document.querySelectorAll(".navtitle").length;
     
             <h2>Discover</h2>
             <div>
-              <iframe width="1000" height="455" src='https://www.youtube.com/embed/RrpaWe5FLY0' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
+              <iframe width="1000" height="455" src='https://www.youtube.com/embed/RrpaWe5FLY0' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen class="iframe"></iframe>
             </div>
             <br /><br /><br />
             <h1>Web-Sacrifice (Intentional Vulnerable Web-application)</h1>
@@ -48,15 +48,15 @@ var num = document.querySelectorAll(".navtitle").length;
         <span class="has-inline-color has-white-color"><strong>Vulnerable Boxes Walkthrough</strong></span>
       </p>
       <div>
-        <iframe width="1160" height="515" src='https://www.youtube.com/embed/mYGATOADlbY' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
+        <iframe width="1160" height="515" src='https://www.youtube.com/embed/mYGATOADlbY' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen class="iframe"></iframe>
         <br></br>
         <br></br>
-        <iframe width="1160" height="515" src='https://www.youtube.com/embed/RrpaWe5FLY0' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
+        <iframe width="1160" height="515" src='https://www.youtube.com/embed/RrpaWe5FLY0' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen class="iframe"></iframe>
         <br></br>
         <br></br>
-        <iframe width="1160" height="515" src='https://www.youtube.com/embed/eMo6yBfw06Y' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
+        <iframe width="1160" height="515" src='https://www.youtube.com/embed/eMo6yBfw06Y' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen class="iframe"></iframe>
         <br></br>
-        <iframe width="1160" height="515" src='https://www.youtube.com/embed/gMIbIAKJ75s' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
+        <iframe width="1160" height="515" src='https://www.youtube.com/embed/gMIbIAKJ75s' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen class="iframe"></iframe>
     </div>
     </section>
       `;
