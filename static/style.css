@@ -12,19 +12,19 @@ body {
 }
 
 .logo {
-    margin-left: 115px;
+    margin-left: 65px;
     grid-area: sidebar;
-    padding-top: 30px;
+    padding-top: 70px;
 }
 
 .title {
-  margin-left: 130px;
+  margin-left: 80px;
   color: darkkhaki;
 }
 
 .logo h1 {
     margin: 0;
-    font-size: 2rem;
+    font-size: 1rem;
     color: darkkhaki;
 }
 
@@ -46,19 +46,15 @@ main {
 }
 
 .content {
-    max-width: 100%;
-    text-align: left;
-    margin-left: -75px;
+    max-width: 90%;
 
 }
 
 .footer {
 	background-color:#27282b;
 	color: white;
-	margin-left: 100px;
 	text-align: center;
-  grid-column: 1 / span 2;
-  bottom: 1000px;
+  padding: 0px;
 }
 
 .footer p {
@@ -72,9 +68,9 @@ main {
 
 
 .navtitle{
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-size: 19px;
-  margin-left:30px;
+  margin-left:10px;
   background-color:#222831;
   color:darkgray;
   border-color: transparent;
@@ -83,69 +79,61 @@ main {
 
 @media (max-width: 767px) {
   body {
-    background-color: black;
-    color: darkgray;
+    display: block;
+    background-color: #27282b;
     font-size: 14px;
-    font-family: Arial, sans-serif;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-template-areas: 
-        "sidebar main"
-  }
-  .logo {
-    margin: 10px;
-    padding: 10px;
-    grid-area: sidebar;
-    padding: 5px;
-  }
-  
-  .title {
-    margin-left: 13px;
-    font-size: 14px;
-    color: darkkhaki;
-  }
+}
 
-  .logo h1 {
-    margin: 0;
-    font-size: 1rem;
-    color: darkkhaki;
-  }
-  
-  .logo-image {
-    height: 50px;
-    width: 50px;
-    border-radius: 100%;
-    object-fit: cover;
-    margin-right: 0px;
-  }
-
-  .navbar{
-    margin-left: -150px;
-    padding: 80px;
-  }
-
-  .one {
+.one {
     position: relative;
-  }
-  .navtitle{
-    position: relative;
-    font-size: 16px;
-  }
-  .footer {
-    background-color:black;
-    color: white;
-    margin-right: 76px;
-    margin-bottom: 0rem;
+    width: 100%;
     text-align: center;
-    bottom: 0px;
-    margin-left: 0rem;
-    padding:0px;
-    }
-    
-    .footer p {
     margin: 0;
-    font-size: 0.5rem;
-    }
+    padding: 0px;
+}
+
+.logo {
+    padding: 10px 0;
+}
+
+.logo-image {
+    height: 100px;
+    width: 100px;
+}
+
+.title {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.navtitle {
+    width: 100%;
+    text-align: left;
+    font-size: 14px;
+    padding: 10px 0;
+}
+
+main {
+    padding: 20px 10px;
+}
+
+.content {
+    margin-left: 0;
+    max-width: 100%;
+    text-align: center;
+}
+
+.footer {
+  margin: 0;
+	font-size: 1rem;
+}
 }
 
 /**writeups style **/
@@ -157,33 +145,29 @@ main {
 }
 
 .writeup-box {
-  width: 80%;
+  width: 100%;
   padding: 20px;
+  color:silver;
   margin: 10px 0;
   border: 1px solid #ddd;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  background-color: #f9f9f9;
-  transition: transform 0.2s;
-}
-
-.writeup-box:hover {
-  transform: scale(1.05);
+  background-color: #27282b;
 }
 
 .writeup-box a {
   text-decoration: none;
-  color: #333;
+  color: skyblue;
   font-size: 20px;
   font-weight: bold;
 }
 
 .writeup-box a:hover {
-  color: #007acc;
+  color: yellowgreen;
 }
 
 .writeup-box p {
   margin: 10px 0;
   font-size: 16px;
-  color: #666;
+  color: darkgrey;
 }

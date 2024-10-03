@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pwned-Box Writeups</title>
+    <title>Offensive Blogs</title>
     <link rel="stylesheet" href="/static/style.css" />
     <link rel="icon" href="/static/unnamed.png" type="image/x-icon" />
     <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.1/dist/showdown.min.js"></script> <!-- Showdown from CDN -->
@@ -21,9 +21,9 @@
                     <button class="navtitle c" onclick="window.location.href='index.html'"><strong>Home</strong></button><br />
                     <button class="navtitle b" onclick="window.location.href='offensive-blog.html'"><strong>Offensive Blogs<br /> </strong></button><br />
                     <button class="navtitle b">
-                      <strong>Vulnerable Boxes Walkthrough<br /> </strong>
-                    </button>
-                    <br />
+                        <strong>Vulnerable Boxes Walkthrough<br /> </strong>
+                      </button>
+                      <br />
                     <button class="navtitle a" onclick="window.location.href='pwned-box.html'"><strong>Pwned-Box Writeups</strong></button>
                 </ul>
             </nav>
@@ -39,43 +39,43 @@
         </div>
     </header>
 
-    <main class="contains">
-        <section class="content">
-            <h2>Pwned-Box Writeups</h2>
-            <div class="writeup-container">
-                <div class="writeup-box">
-                    <a href="#" onclick="loadMarkdown(this, '/static/writeups/cicada-htb.md')">Cicada Write-up (HacktheBox)</a>
-                    <p>Will be updated after box is Retired.</p>
-                    <div class="markdown-content"></div> <!-- Container for displaying Markdown content -->
+        <main class="contains">
+            <section class="content">
+                <h2>Offensive Blogs</h2>
+                <div class="writeup-container">
+                    <div class="writeup-box">
+                        <a href="#" onclick="loadMarkdown(this, '/static/Offensive-Blog/Attacking-AD.md')">Attacking Active Directory</a>
+                        <p>Notes for Active Directory security assessment.</p>
+                        <div class="markdown-content"></div> <!-- Container for displaying Markdown content -->
+                    </div>
+    
+                    <div class="writeup-box">
+                        <a href="#" onclick="loadMarkdown(this, '/static/writeups/writeup2.md')">Notes for Web Application Attack</a>
+                        <p>will be updated.</p>
+                        <div class="markdown-content"></div> <!-- Container for displaying Markdown content -->
+                    </div>
                 </div>
-
-                <div class="writeup-box">
-                    <a href="#" onclick="loadMarkdown(this, '/static/writeups/writeup2.md')">Box-2</a>
-                    <p>Will be Updated after box is Retired.</p>
-                    <div class="markdown-content"></div> <!-- Container for displaying Markdown content -->
-                </div>
-            </div>
-            <div id="writeup-content"></div> <!-- Container for displaying Markdown content -->
-        </section>
-    </main>
-          <script>
-              function loadMarkdown(element, file) {
-                  const markdownContainer = element.closest('.writeup-box').querySelector('.markdown-content');
-                  if (markdownContainer.innerHTML) {
+            </section>
+        </main>
+    
+        <script>
+            function loadMarkdown(element, file) {
+                const markdownContainer = element.closest('.writeup-box').querySelector('.markdown-content');
+                if (markdownContainer.innerHTML) {
                 // If content is already displayed, clear it
                 markdownContainer.innerHTML = '';
                 return; // Exit the function
             }
-                  fetch(file)
-                      .then(response => response.text())
-                      .then(markdown => {
-                          const converter = new showdown.Converter();
-                          const html = converter.makeHtml(markdown);
-                          markdownContainer.innerHTML = html;
-                      })
-                      .catch(error => console.error('Error loading markdown:', error));
-              }
-          </script>
-          <script src="index.js"></script>
+                fetch(file)
+                    .then(response => response.text())
+                    .then(markdown => {
+                        const converter = new showdown.Converter();
+                        const html = converter.makeHtml(markdown);
+                        markdownContainer.innerHTML = html;
+                    })
+                    .catch(error => console.error('Error loading markdown:', error));
+            }
+        </script>
+        <script src="index.js"></script>
 </body>
 </html>
