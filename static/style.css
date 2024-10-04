@@ -1,176 +1,191 @@
 body {
-    margin: 0;
-    padding: 0;
-    background-color:#27282b;
-    color: darkgray;
-    font-size: 18px;
-    font-family: Arial, sans-serif;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-template-areas: 
-        "sidebar main"
+  margin: 0;
+  padding: 0;
+  background-color:#27282b;
+  color: darkgray;
+  font-size: 18px;
+  font-family: Arial, sans-serif;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas: 
+      "sidebar main"
 }
 
 .logo {
-    margin-left: 65px;
-    grid-area: sidebar;
-    padding-top: 70px;
+  margin-left: 65px;
+  grid-area: sidebar;
+  padding-top: 70px;
 }
 
 .title {
-  margin-left: 60px;
-  color: darkkhaki;
+margin-left: 60px;
+color: darkkhaki;
 }
 
 .logo h1 {
-    margin: 0;
-    font-size: 1rem;
-    color: darkkhaki;
+  margin: 0;
+  font-size: 1rem;
+  color: darkkhaki;
 }
 
 .logo-image {
-    height: 150px;
-    width: 150px;
-    border-radius: 100%;
-    object-fit: cover;
-    margin-right: 0px;
-  }
+  height: 150px;
+  width: 150px;
+  border-radius: 100%;
+  object-fit: cover;
+  margin-right: 0px;
+}
 
-  .one {
-    position: fixed ;
-  }
+.one {
+  position: fixed ;
+}
 
 main {
-    grid-area: main;
-    padding: 10px;
+  grid-area: main;
+  padding: 10px;
 }
 
 .content {
-    max-width: 90%;
-
+  max-width: 90%;
 }
 
 .footer {
-	background-color:#27282b;
-	color: white;
-	text-align: center;
-  padding: 0px;
+background-color:#27282b;
+color: white;
+color: darkgrey;
+padding: 60px;
 }
 
 .footer p {
-	margin: 0;
-	font-size: 1rem;
+margin: 0;
+font-size: 1rem;
 }
 
 .navtitle:hover{
-  color: yellowgreen;
+color: yellowgreen;
 }
 
 
 .navtitle{
-  margin-bottom: 10px;
-  font-size: 19px;
-  margin-left:10px;
-  background-color:#222831;
-  color:darkgray;
-  border-color: transparent;
-  text-align: center;
+margin-bottom: 10px;
+font-size: 19px;
+margin-left:10px;
+background-color:#222831;
+color:darkgray;
+border-color: transparent;
+text-align: center;
 }
 
 @media (max-width: 767px) {
-  body {
-    display: block;
-    background-color: #27282b;
-    font-size: 12px;
+body {
+  display: block;
+  background-color: #27282b;
+  font-size: 12px;
 }
 
 .one {
-    position: relative;
-    width: 100%;
-    text-align: center;
-    margin: 0;
-    padding: 0px;
+  position: relative;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  padding: 0px;
 }
 
 .logo {
-    padding: 10px 0;
+  padding: 10px 0;
 }
 
 .logo-image {
-    height: 100px;
-    width: 100px;
+  height: 100px;
+  width: 100px;
 }
 
 .title {
-    font-size: 16px;
-    margin-top: 10px;
+  font-size: 16px;
+  margin-top: 10px;
 }
 
 .iframe {
-  width: 90%;
+width: 90%;
 }
 
 .navbar {
-  width: 90%;
-  text-align: justify;
-  position: relative;
-    padding: 0px;
+width: 90%;
+text-align: justify;
+position: relative;
+  padding: 0px;
 }
 
 .navtitle {
-    width: 100%;
-    text-align: left;
-    font-size: 14px;
-    padding: 10px 0;
+  width: 100%;
+  text-align: left;
+  font-size: 14px;
+  padding: 10px 0;
 }
 
 main {
-    padding: 20px 10px;
+  padding: 20px 10px;
 }
 
 .content {
-    margin-left: 0;
-    max-width: 100%;
-    text-align: center;
+  margin-left: 0;
+  max-width: 100%;
+  text-align: center;
 }
 
 .footer {
-  display:none;
+display:none;
 }
 }
 
 /**writeups style **/
 .writeup-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 20px;
+display: flex;
+flex-direction: column;
+align-items: center;
+margin: 20px;
+/*width: 100%;  Make sure the parent container takes full width */
+/*max-width: 1200px;  Optional: set a max-width if needed for larger screens */
 }
 
 .writeup-box {
-  width: 100%;
-  padding: 20px;
-  color:silver;
-  margin: 10px 0;
-  border: 1px solid #ddd;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  background-color: #27282b;
+width: 100%;
+padding: 20px;
+color: silver;
+margin: 10px 0;
+border: 1px solid #bdb4b4;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+border-radius: 10px;
+word-wrap: break-word;
+overflow-wrap: break-word;
+box-sizing: border-box; /* Ensure padding and border fit within width */
+max-width: 100%;
 }
 
 .writeup-box a {
-  text-decoration: none;
-  color: skyblue;
-  font-size: 20px;
-  font-weight: bold;
+text-decoration: none;
+color: skyblue;
+font-size: 20px;
+font-weight: bold;
 }
 
 .writeup-box a:hover {
-  color: yellowgreen;
+color: yellowgreen;
 }
 
 .writeup-box p {
-  margin: 10px 0;
-  font-size: 16px;
-  color: darkgrey;
+margin: 10px 0;
+font-size: 16px;
+}
+.markdown-content {
+word-wrap: break-word; /* Added for word wrapping */
+overflow-wrap: break-word; /* Added for word wrapping */
+}
+.markdown-content img {
+max-width: 100%; /* Ensure images don't overflow */
+height: auto; /* Maintain aspect ratio */
+}
+.markdown-content pre {
+white-space: pre-wrap;
+overflow-x: auto;
 }

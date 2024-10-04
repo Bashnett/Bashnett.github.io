@@ -23,12 +23,9 @@
                     <button class="navtitle c">
                       <strong>Vulnerable Boxes Walkthrough<br /> </strong>
                     </button>
-                    <br />
-                    <button class="navtitle d" onclick="window.location.href='pwned-box.html'"><strong>Pwned-Box Writeups</strong></button>
                 </ul>
             </nav>
             <div class="footer">
-                <br />
                 <p>
                     <h4>Reach me through:</h4>
                     <a href="https://www.youtube.com/@basher-36"><img src="/static/youtube.svg" /></a>
@@ -44,8 +41,7 @@
             <h2>Pwned-Box Writeups</h2>
             <div class="writeup-container">
                 <div class="writeup-box">
-                    <a href="#" onclick="loadMarkdown(this, '/static/writeups/cicada-htb.md')">Cicada Write-up (HacktheBox)</a>
-                    <p>Will be updated after box is Retired.</p>
+                    <a href="#" onclick="loadMarkdown(this, '/static/tobeupdate.md')">Cicada Write-up (HacktheBox)</a> <!-- a(this, '/static/writeups/Cicada/cicada-htb.md', 'cicada-htb')" for using hash-->
                     <div class="markdown-content"></div> <!-- Container for displaying Markdown content -->
                 </div>
 
@@ -59,11 +55,12 @@
         </section>
     </main>
           <script>
-              function loadMarkdown(element, file) {
+              function loadMarkdown(element, file) {//function loadMarkdown(element, file, hash)
                   const markdownContainer = element.closest('.writeup-box').querySelector('.markdown-content');
                   if (markdownContainer.innerHTML) {
                 // If content is already displayed, clear it
                 markdownContainer.innerHTML = '';
+                //location.hash = '';
                 return; // Exit the function
             }
                   fetch(file)
@@ -72,6 +69,8 @@
                           const converter = new showdown.Converter();
                           const html = converter.makeHtml(markdown);
                           markdownContainer.innerHTML = html;
+                          // Update the URL to include the specific hash
+                          //location.hash = hash;
                       })
                       .catch(error => console.error('Error loading markdown:', error));
               }
