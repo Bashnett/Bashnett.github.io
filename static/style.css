@@ -151,7 +151,8 @@ margin: 20px;
 .writeup-box {
 width: 100%;
 padding: 20px;
-color: silver;
+color: #292929;
+background-color: #ffffff;
 margin: 10px 0;
 border: 1px solid #bdb4b4;
 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -164,7 +165,7 @@ max-width: 100%;
 
 .writeup-box a {
 text-decoration: none;
-color: skyblue;
+color: slategray;
 font-size: 20px;
 font-weight: bold;
 }
@@ -177,14 +178,17 @@ color: yellowgreen;
 margin: 10px 0;
 font-size: 16px;
 }
+
 .markdown-content {
 word-wrap: break-word; /* Added for word wrapping */
 overflow-wrap: break-word; /* Added for word wrapping */
 }
+
 .markdown-content img {
 max-width: 100%; /* Ensure images don't overflow */
 height: auto; /* Maintain aspect ratio */
 }
+
 .markdown-content pre {
 white-space: pre-wrap;
 overflow-x: auto;
