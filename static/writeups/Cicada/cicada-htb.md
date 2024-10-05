@@ -1,5 +1,7 @@
 This is a writeup for recently retired Cicada machine in Hackthebox platform.
 
+![NMAP](/static/writeups/Cicada/cicada.png)
+
 ### Part one: Scanning and Enumeration
 
 Let’s begin with an nmap scan, so that we know which service are running and where to start.
