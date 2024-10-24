@@ -10,7 +10,7 @@ Web Application pentesting process consists of the following phases:
 
 Each phase is crucial to uncovering security weaknesses and providing a comprehensive assessment.
 
-## 1. Reconnaissance: Information Gathering Techniques
+### 1. Reconnaissance: Information Gathering Techniques
 
 Effective reconnaissance involves collecting information about the target application’s infrastructure, technologies, and endpoints. Some key techniques include:
 
@@ -21,7 +21,7 @@ Effective reconnaissance involves collecting information about the target applic
 
 > **Pro Tip:** Combining both passive and active reconnaissance techniques yields the most comprehensive results.
 
-## 2. Mapping the Attack Surface
+### 2. Mapping the Attack Surface
 
 Once reconnaissance is complete, the next step is to map the attack surface:
 
@@ -31,11 +31,11 @@ Once reconnaissance is complete, the next step is to map the attack surface:
 
 Tools like `Burp Suite` or `OWASP ZAP` are indispensable for mapping and analyzing the attack surface efficiently.
 
-## 3. Exploiting Common Vulnerabilities
+### 3. Exploiting Common Vulnerabilities
 
 A web application pentest typically focuses on discovering and exploiting the following categories of vulnerabilities:
 
-### a. Injection Attacks
+#### a. Injection Attacks
 
 Injection flaws, such as SQL Injection and Command Injection, occur when untrusted user inputs are executed as part of a query or command.
 
@@ -44,7 +44,7 @@ Injection flaws, such as SQL Injection and Command Injection, occur when untrust
 
 > **Best Practice:** Always verify automated findings manually and try different payloads to evade defenses like Web Application Firewalls (WAFs).
 
-### b. Cross-Site Scripting (XSS)
+#### b. Cross-Site Scripting (XSS)
 
 XSS vulnerabilities allow attackers to inject malicious scripts into web pages viewed by other users.
 
@@ -54,7 +54,7 @@ XSS vulnerabilities allow attackers to inject malicious scripts into web pages v
 
 Use tools like `XSS Hunter` to detect and log executed scripts for testing purposes.
 
-### c. Insecure Authentication and Session Management
+#### c. Insecure Authentication and Session Management
 
 Weak authentication mechanisms or insecure session management can lead to account compromise. Look for:
 
@@ -62,11 +62,11 @@ Weak authentication mechanisms or insecure session management can lead to accoun
 - **Session fixation or session hijacking opportunities.**
 - **Unsecured transmission of authentication tokens.**
 
-### d. Cross-Site Request Forgery (CSRF)
+#### d. Cross-Site Request Forgery (CSRF)
 
 CSRF vulnerabilities enable attackers to trick users into executing unwanted actions. Ensure to check for anti-CSRF tokens in forms.
 
-### e. Security Misconfigurations
+#### e. Security Misconfigurations
 
 Inspect server and application configurations for common misconfigurations:
 
@@ -74,7 +74,7 @@ Inspect server and application configurations for common misconfigurations:
 - **Default configurations and credentials.**
 - **Unnecessary services or exposed admin panels.**
 
-## 4. Post-Exploitation: Gaining a Foothold
+### 4. Post-Exploitation: Gaining a Foothold
 
 Once a vulnerability is successfully exploited, assess the implications:
 
@@ -84,7 +84,7 @@ Once a vulnerability is successfully exploited, assess the implications:
 
 Document the findings meticulously, including screenshots, logs, and any potential data leakage.
 
-## 5. Reporting: Crafting a Comprehensive Penetration Test Report
+### 5. Reporting: Crafting a Comprehensive Penetration Test Report
 
 The final phase of a pentest is to prepare a report detailing the findings, exploitation methods, and recommendations for remediation:
 
@@ -98,7 +98,7 @@ The final phase of a pentest is to prepare a report detailing the findings, expl
 
 A well-structured report helps stakeholders understand the security posture and prioritize remediation efforts.
 
-## 6. Tools of the Trade
+### 6. Tools of the Trade
 
 Several tools are essential for offensive web application penetration testing:
 

