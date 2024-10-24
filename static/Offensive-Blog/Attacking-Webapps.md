@@ -1,10 +1,6 @@
 # Web Application Penetration Testing
 
-Web application penetration testing (pentesting) is a critical process for assessing the security posture of web applications. It involves simulating real-world attacks to identify vulnerabilities that could be exploited by malicious actors. In this blog, we’ll dive into the offensive side of web application pentesting, covering key techniques, tools, and best practices to sharpen your skills.
-
-## The Pentesting Process
-
-The pentesting process consists of the following phases:
+Web Application pentesting process consists of the following phases:
 
 1. **Reconnaissance:** Gather as much information as possible about the target application.
 2. **Mapping the Attack Surface:** Identify all potential entry points and attack vectors.
