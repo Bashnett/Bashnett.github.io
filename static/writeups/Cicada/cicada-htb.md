@@ -1,4 +1,4 @@
-This is a writeup for recently retired Cicada machine in Hackthebox platform.
+This is a writeup for recently expired Cicada machine in Hackthebox platform.
 
 ### Part one: Scanning and Enumeration
 

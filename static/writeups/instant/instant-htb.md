@@ -1,4 +1,4 @@
-This is a writeup for recently retired instant box in Hackthebox platform.
+This is a writeup for recently expired instant box in Hackthebox platform.
 
 ### Part 1: Enumeration
 

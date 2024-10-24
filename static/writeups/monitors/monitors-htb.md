@@ -1,4 +1,4 @@
-This is a writeup for recently retired monitorsthree machine in Hackthebox platform.
+This is a writeup for recently expired monitorsthree machine in Hackthebox platform.
 
 ### Part 1: Enumeration
 
