@@ -18,13 +18,15 @@
             <br />
             <nav class="navbar">
                 <ul>
-                    <button class="navtitle a" onclick="window.location.href='index.html'"><strong>Home</strong></button><br />
-                    <button class="navtitle c">
-                        <strong>Vulnerable Boxes Walkthrough<br /> </strong>
-                      </button>
-                      <br />
-                    <button class="navtitle d" onclick="window.location.href='pwned-box.html'"><strong>Pwned-Box Writeups</strong></button>
-                </ul>
+                    <a class="navtitle" href="/index.html">
+                      <strong>Home<br /> </strong>
+                    </a>
+                    <br /><br />
+                    <a class="navtitle" href="/pwned-box.html">
+                      <strong>Pwned-Box Writeups<br /> </strong>
+                  </a>
+                    <br />
+                  </ul>
             </nav>
             <div class="footer">
                 <p>
@@ -39,7 +41,7 @@
 
         <main class="contains">
             <section class="content">
-                <h2>Offensive Blogs</h2>
+                <h2 class="ptitle">Offensive Blogs</h2>
                 <div class="writeup-container">
                     <div class="writeup-box">
                         <a href="#" onclick="loadMarkdown(this, '/static/Offensive-Blog/Attacking-AD.md')">Attacking Active Directory</a>
@@ -74,6 +76,5 @@
                     .catch(error => console.error('Error loading markdown:', error));
             }
         </script>
-        <script src="index.js"></script>
 </body>
 </html>

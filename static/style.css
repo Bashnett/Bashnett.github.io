@@ -19,8 +19,12 @@ body {
 
 .title {
 margin-left: 60px;
-color: darkkhaki;
+color: #4CAF50;
 }
+
+.ptitle {
+  color: #4CAF50;
+  }
 
 .logo h1 {
   margin: 0;
@@ -62,18 +66,21 @@ font-size: 1rem;
 }
 
 .navtitle:hover{
-color: yellowgreen;
+color: darkgoldenrod;
 }
 
 
 .navtitle{
-margin-bottom: 10px;
-font-size: 19px;
-margin-left:10px;
-background-color:#222831;
-color:darkgray;
-border-color: transparent;
-text-align: center;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: black; /* Button background color */
+  color: darkgray; /* Text color */
+  text-decoration: none; /* Remove underline */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 20px; /* Font size */
+  border: none; /* Remove border */
+  cursor: pointer; /* Pointer cursor on hover */
+  text-align: center; /* Center the text */
 }
 
 @media (max-width: 767px) {
@@ -171,7 +178,7 @@ font-weight: bold;
 }
 
 .writeup-box a:hover {
-color: yellowgreen;
+color: #4CAF50;
 }
 
 .writeup-box p {
