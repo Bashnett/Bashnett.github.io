@@ -56,7 +56,8 @@ When I use nine column:
 ad'union select null,null,null,null,null,null,null,null,null from dual--
 </span>
 
-it says successfully sent request code, so I know that query is returning nine column.
+it says successfully sent request code, so I know that query is returning nine column. but,no query result or anything is shown.
+so, I think i got my hands on BLIND SQli which might be response based.
 
 By submitting,
 
