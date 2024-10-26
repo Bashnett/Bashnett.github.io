@@ -5,7 +5,7 @@ This is a writeup for recently expired instant box in Hackthebox platform.
 As always lets startup with good old nmap scan:
 
 ```
-nmap -T4 -Sv -Sc -p- -oN instant.txt 10.10.11.37
+nmap -T4 -sC -sV -p- -oN instant.txt 10.10.11.37
 ```
 
 ![NMAP](/static/writeups/instant/1.png)

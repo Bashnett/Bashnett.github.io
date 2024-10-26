@@ -5,7 +5,7 @@ This is a writeup for recently expired Cicada machine in Hackthebox platform.
 Let’s begin with an nmap scan, so that we know which service are running and where to start.
 
 ```
-nmap -Sv -Sc 10.10.11.27
+nmap -sC -sV 10.10.11.27
 ```
 
 ![NMAP](/static/writeups/Cicada/0.png)
