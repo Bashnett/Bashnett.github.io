@@ -81,7 +81,9 @@ It is encrypted, To decrypt it you can bruteforce it using python with pycryptod
 
 root user password is in decrypted file, now lets ssh to machine using this:
 
-> ssh root@10.10.11.37
+```
+ssh root@10.10.11.37
+```
 
 We aren't able to ssh with root then lets ssh with shirohige and switch user to root using above password.
 
