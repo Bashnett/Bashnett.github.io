@@ -109,4 +109,4 @@ and we are able to get root flag like this:
 
 cheers!!
 
-![NMAP](/static/writeups/Cicada/cicadaa.png)
+![](/static/writeups/Cicada/cicadaa.png)
