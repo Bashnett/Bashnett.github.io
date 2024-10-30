@@ -2,7 +2,7 @@ This is a writeup for recently expired instant box in Hackthebox platform.
 
 ### Part 1: Enumeration
 
-As always lets startup with good old nmap scan:
+As always lets start with good old nmap scan:
 
 ```
 nmap -T4 -sC -sV -p- -oN instant.txt 10.10.11.37

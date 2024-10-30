@@ -2,7 +2,7 @@ This is a writeup for recently expired monitorsthree machine in Hackthebox platf
 
 ### Part 1: Enumeration
 
-As always lets startup with good old nmap scan:
+As always lets start with good old nmap scan:
 
 ![NMAP](/static/writeups/monitors/1.png)
 
