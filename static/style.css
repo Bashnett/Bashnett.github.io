@@ -21,7 +21,7 @@ body {
 
 .title {
   margin-left: 30px;
-  font-size: 21px;
+  font-size: 20px;
 }
 
 
@@ -32,6 +32,7 @@ body {
 
 .xtitle {
   text-align: center;
+  font-size: 17px;
 }
 
 .logo h1 {
