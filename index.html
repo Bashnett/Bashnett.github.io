@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/static/style.css" />
     <link rel="icon" href="/static/unnamed.png" type="image/x-icon" />
     <link rel="shortcut icon" href="/static/unnamed.png" type="image/x-icon" />
+    <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.1/dist/showdown.min.js"></script>
   </head>
   <body>
     <header>
@@ -16,8 +17,6 @@
         </div>
         <p class="title">&ensp;Anish Basnet,<br /><i>Security researcher</i></p>        
         <br /><br />
-        <div class="xtitle"><i>Find <strong>Information security blogs</strong> and <strong>writeups</strong> here:</i></div>
-        <br />
         <nav class="navbar">
           <ul>
             <a class="navtitle" href="/security-blog.html">
@@ -48,7 +47,45 @@
     </header>
     <main class="contains">
       <section class="content">
-      <h2 style="margin-top: 50px;">Projects</h2>
+      <h1 style="margin-top: 50px;text-align: center;">Offensive Security Blogs</h1>
+      <div class="xtitle"><i>Find <strong>Information security blogs</strong> and <strong>writeups</strong> here:</i></div>
+        <div class="writeup-container">
+          <div class="writeup-box">
+              <a href="#" onclick="loadMarkdown(this, '/static/writeups/Cicada/cicada-htb.md')">Cicada Write-up (HacktheBox)</a> <!-- a(this, '/static/writeups/Cicada/cicada-htb.md', 'cicada-htb')" for using hash-->
+              <div class="markdown-content"></div> <!-- Container for displaying Markdown content -->
+          </div>
+
+          <div class="writeup-box">
+              <a href="#" onclick="loadMarkdown(this, '/static/writeups/instant/instant-htb.md')">instant Write-up (HacktheBox)</a>
+              <div class="markdown-content"></div> <!-- Container for displaying Markdown content -->
+          </div>
+
+          <div class="writeup-box">
+              <a href="#" onclick="loadMarkdown(this, '/static/writeups/monitors/monitors-htb.md')">Monitorsthree Write-up (HacktheBox)</a>
+              <div class="markdown-content"></div> <!-- Container for displaying Markdown content -->
+          </div>
+
+          <div class="writeup-box">
+              <a href="#" onclick="loadMarkdown(this, '/static/writeups/chemistry/chemistry-htb.md')">Chemistry Write-up (HacktheBox)</a>
+              <div class="markdown-content"></div> <!-- Container for displaying Markdown content -->
+          </div>
+
+          <div class="writeup-box">
+            <a href="#" onclick="loadMarkdown(this, '/static/Security-Blogs/Attacking-AD.md')">Attacking Active Directory</a>
+            <p>Notes for Active Directory security assessment.</p>
+            <div class="markdown-content"></div> <!-- Container for displaying Markdown content -->
+        </div>
+
+        <div class="writeup-box">
+            <a href="#" onclick="loadMarkdown(this, '/static/Security-Blogs/Attacking-Webapps.md')">Attacking Web Application</a>
+            <p>Notes for Web Application security assessment.</p>
+            <div class="markdown-content"></div> <!-- Container for displaying Markdown content -->
+        </div>
+
+      </div>
+      <div id="writeup-content"></div> <!-- Container for displaying Markdown content -->
+      <br/>
+      <h2 style="text-align: center;">Projects</h2>
         <h3 class="ptitle">Web-Sacrifice (Intentional Vulnerable Web-application)</h3>
         <p>
           <span class="has-inline-color has-white-color">&ensp;&ensp;It is intentional vulnerable web application i developed that
@@ -63,25 +100,28 @@
             ></span
           >
         </p>
-        <h2 style="text-align: center;">Vulnerable Boxes & CTFs</h2>
-        <div>
-          <iframe
-            width="1550"
-            height="600"
-            src="https://www.youtube.com/embed/mYGATOADlbY"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            class="iframe"
-          ></iframe>
-        <br></br>
-        <iframe width="1550" height="600" src='https://www.youtube.com/embed/RrpaWe5FLY0' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen class="iframe"></iframe>
-        <br></br>
-        <iframe width="1550" height="600" src='https://www.youtube.com/embed/eMo6yBfw06Y' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen class="iframe"></iframe>
-        <br></br>
-        <iframe width="1550" height="600" src='https://www.youtube.com/embed/gMIbIAKJ75s' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen class="iframe"></iframe>
-      </div>
       </section>
     </main>
+    <script>
+      function loadMarkdown(element, file) {//function loadMarkdown(element, file, hash)
+          const markdownContainer = element.closest('.writeup-box').querySelector('.markdown-content');
+          if (markdownContainer.innerHTML) {
+        // If content is already displayed, clear it
+        markdownContainer.innerHTML = '';
+        //location.hash = '';
+        return; // Exit the function
+    }
+          fetch(file)
+              .then(response => response.text())
+              .then(markdown => {
+                  const converter = new showdown.Converter();
+                  const html = converter.makeHtml(markdown);
+                  markdownContainer.innerHTML = html;
+                  // Update the URL to include the specific hash
+                  //location.hash = hash;
+              })
+              .catch(error => console.error('Error loading markdown:', error));
+      }
+  </script>
   </body>
 </html>
