@@ -51,7 +51,7 @@ Samba can offer us a great bit of information when enumerated properly. Dependin
 
 Samba can be found listening on the usual “NetBIOS” ports.
 
-#1
+![NMAP](/static/Security-Blogs/img/1.png)
 
 Samba can be trivially identified with a version scan (-sV) against NetBIOS ports.
 
