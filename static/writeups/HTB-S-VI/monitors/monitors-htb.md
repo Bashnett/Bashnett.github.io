@@ -4,12 +4,12 @@ This is a writeup for recently expired monitorsthree machine in Hackthebox platf
 
 As always lets start with good old nmap scan:
 
-![NMAP](/static/writeups/monitors/1.png)
+![NMAP](/static/writeups/HTB-S-VI/monitors/1.png)
 
 SSH and HTTP with port 22 and 80 respectively are open.
 lets see what website is hosted in port 80, we have to add monitorsthree.htb to machine ip in /etc/hosts:
 
-![NMAP](/static/writeups/monitors/2.png)
+![NMAP](/static/writeups/HTB-S-VI/monitors/2.png)
 
 I can see site called monitorsthree.htb, to enumerate subdomain i made bash script, to add wordlist to /etc/host and send request to it:
 
@@ -43,7 +43,7 @@ I found interesting subdomain called 'cacti.monitorsthree.htb', it asks for logi
 
 there is a login page in monitorsthree.htb/login.php, and when using forgot password, i found sql injection in forgot_password.php by submitting:`'`:
 
-![NMAP](/static/writeups/monitors/3.png)
+![NMAP](/static/writeups/HTB-S-VI/monitors/3.png)
 
 ### Part 2: Foothold
 
@@ -63,7 +63,7 @@ ad'||(SELECT '' FROM users)||'
 
 It gives successful output
 
-![NMAP](/static/writeups/monitors/5.png)
+![NMAP](/static/writeups/HTB-S-VI/monitors/5.png)
 
 now we know there is a table called users.
 To enumerate user, i first used username administrator
@@ -74,7 +74,7 @@ ad' ||((SELECT 'a' FROM users WHERE username='administrator')='a')||'
 
 this gives error: `Unable to process request, try again!`
 
-![NMAP](/static/writeups/monitors/4.png)
+![NMAP](/static/writeups/HTB-S-VI/monitors/4.png)
 
 but as when we input admin:
 
@@ -83,7 +83,7 @@ ad' ||((SELECT 'a' FROM users WHERE username='admin')='a')||'
 ```
 
 it outputs: `Successfully sent password reset request!`
-![NMAP](/static/writeups/monitors/5.png)
+![NMAP](/static/writeups/HTB-S-VI/monitors/5.png)
 
 so, we know there is user called admin more clinically now.
 
@@ -153,17 +153,17 @@ print(f"[+] Password: {known_password}")
 
 Output:
 
-![NMAP](/static/writeups/monitors/6.png)
+![NMAP](/static/writeups/HTB-S-VI/monitors/6.png)
 
 I got admin user hash value from it:
 
 By using hashid, i think it is md5 hash
 
-![NMAP](/static/writeups/monitors/7.png)
+![NMAP](/static/writeups/HTB-S-VI/monitors/7.png)
 
 I cracked the hash using hashcat which corresponds to: greencacti2001
 
-![NMAP](/static/writeups/monitors/8.png)
+![NMAP](/static/writeups/HTB-S-VI/monitors/8.png)
 
 Now, lets use these credential in login.php and 'cacti.monitorsthree.htb'. One thing i notice when opening 'cacti.monitorsthree.htb' is it is using cacti v 1.2.26 and quick research shows us vulnerability in this specific version to use Arbitrary file write to RCE.
 
@@ -206,7 +206,7 @@ system("cat shell.xml | gzip -9 > shell.xml.gz; rm shell.xml");
 
 save this as shell.php and run it using `php shell.php`, it will generate file called shell.xml.gz upload it in import packages in cacti:
 
-![NMAP](/static/writeups/monitors/9.png)
+![NMAP](/static/writeups/HTB-S-VI/monitors/9.png)
 
 As you can see, we successfully uploaded shell.php in the machine, we can execute it by going to: `http://cacti.monitorsthree.htb/cacti/resource/shell.php`
 before that open netcat listener in your machine: `nc -nvlp port`
@@ -228,16 +228,16 @@ socat TCP-LISTEN:8200,fork TCP:monitorsthree_IP:1337
 Now, i can visit site in port 8200 in our machine, going there we are directed into login.html where it asks for password. Trying default duplicati password like 'DUPLICATI,duplicati,Duplicate' doesnot seem to work. Remember i found duplicati folder earlier, looking files recursively in that folder i found a file called `Duplicati-server.sqlite` in `/opt/duplicati/config/` which i can read using `strings`.
 I found interesting hash in there:
 
-![NMAP](/static/writeups/monitors/10.png)
+![NMAP](/static/writeups/HTB-S-VI/monitors/10.png)
 
 Using those hashes directly lead me nowhere so, after researching for a while i found a way to login with this process:
 open up burpsuite and intercept the traffic, after submitting password we can see it creates nonce value and salt. notice that salt it gives in response and salt found in that duplicati file are same.
 
-![NMAP](/static/writeups/monitors/11.png)
+![NMAP](/static/writeups/HTB-S-VI/monitors/11.png)
 
 But, nonce is different each time we login, and in burp http-history notice it executes javascript for converting password into hash value
 
-![NMAP](/static/writeups/monitors/12.png)
+![NMAP](/static/writeups/HTB-S-VI/monitors/12.png)
 
 ```
 var saltedpwd = CryptoJS.SHA256(CryptoJS.enc.Hex.parse(CryptoJS.enc.Utf8.parse($('#login-password').val()) + CryptoJS.enc.Base64.parse(data.Salt)));
@@ -255,13 +255,13 @@ var noncedpwd = CryptoJS.SHA256(CryptoJS.enc.Hex.parse(CryptoJS.enc.Base64.parse
 
 Now run 'server-passphrase' hash found earlier in cyberchef using `From base64 and TO HEX`, this is our saltedpwd
 
-![NMAP](/static/writeups/monitors/13.png)
+![NMAP](/static/writeups/HTB-S-VI/monitors/13.png)
 
 before creating password hash, we must adjust our time same as of monitorsthree machine because some token implementation is related to it. monitorsthree is using timezone `Etc/UTC` so, in your host machine use set `timedatectl set-timezone Etc/UTC`
 
 Remember in each login it creates new nonce that we are able to use in that request only so intercept the request using burp and copy the URL decode the nonce value obtain via session-nonce in burp decoder.
 
-![NMAP](/static/writeups/monitors/14.png)
+![NMAP](/static/writeups/HTB-S-VI/monitors/14.png)
 
 use it in noncedpwd with saltedpwdrunnning:
 
@@ -269,24 +269,24 @@ use it in noncedpwd with saltedpwdrunnning:
 var noncedpwd = CryptoJS.SHA256(CryptoJS.enc.Hex.parse(CryptoJS.enc.Base64.parse(data.Nonce) + saltedpwd)).toString(CryptoJS.enc.Base64);
 ```
 
-![NMAP](/static/writeups/monitors/15.png)
+![NMAP](/static/writeups/HTB-S-VI/monitors/15.png)
 Now url encode password hash using `CTRL + U` in burp and use it in previously intercepted login request:
 
-![NMAP](/static/writeups/monitors/16.png)
+![NMAP](/static/writeups/HTB-S-VI/monitors/16.png)
 
 and got directed to Duplicati panel
 
-![NMAP](/static/writeups/monitors/17.png)
+![NMAP](/static/writeups/HTB-S-VI/monitors/17.png)
 
 now, create two folder in /tmp directory eg: fat and dat and go in add backup and setup the backup choose backup destination as `/source/tmp/dat` and source data as `/source/home/marcus/` then run it.
 
 Notice three different file in `/tmp/dat` as it succed now in restore tab select that backup and select user.txt in select files and `/source/tmp/fat/` as restore destination, now i can see all file from `/home/marcus/` present in `/tmp/fat` and got user flag:
 
-![NMAP](/static/writeups/monitors/18.png)
+![NMAP](/static/writeups/HTB-S-VI/monitors/18.png)
 
 using similar technique for root flag which is located in `/root/root.txt` i got root flag:
 
-![NMAP](/static/writeups/monitors/19.png)
+![NMAP](/static/writeups/HTB-S-VI/monitors/19.png)
 
 ### Conclusion
 
