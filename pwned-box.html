@@ -129,6 +129,11 @@
             markdownContainer.innerHTML = html;
             // Update the URL to include the specific hash
             //location.hash = hash;
+
+            element.closest(".writeup-box").scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
           })
           .catch((error) => console.error("Error loading markdown:", error));
       }
