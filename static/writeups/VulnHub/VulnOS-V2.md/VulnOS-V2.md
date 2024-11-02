@@ -4,7 +4,7 @@ I started with nmap scan:
 
 ![NMAP](/static/writeups/VulnHub/VulnOS-V2.md/1.png)
 
-Port 22 and 80 are open, i started of with http, it was hosting this website
+Port 22 and 80 are open, i started with http, it was hosting this website
 
 ![NMAP](/static/writeups/VulnHub/VulnOS-V2.md/2.png)
 
@@ -19,6 +19,8 @@ I fired up dirsearch and found many interesting directories in this site
 from the directories result, i suspected it was using drupal, so i ran whatweb and found out it was using old version of drupal which was vulnerable to many exploits:
 
 ![NMAP](/static/writeups/VulnHub/VulnOS-V2.md/5.png)
+
+### Part 2 - Foothold:
 
 ##### searchsploit result:
 
