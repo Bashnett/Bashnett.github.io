@@ -51,7 +51,15 @@ Samba can offer us a great bit of information when enumerated properly. Dependin
 
 Samba can be found listening on the usual “NetBIOS” ports.
 
-![NMAP](/static/Security-Blogs/img/1.png)
+```
+netbios-ns               137/tcp                #NETBIOS Name Service
+netbios-ns               137/tcp
+netbios-dgm              138/tcp                #NETBIOS Datagram Service
+netbios-dgm              138/udp
+netbios-ssn              139/tcp                #NETBIOS session service
+netbios-ssn              139/udp
+microsoft-ds             445/tcp                #Microsoft Naked CIFS
+```
 
 Samba can be trivially identified with a version scan (-sV) against NetBIOS ports.
 
