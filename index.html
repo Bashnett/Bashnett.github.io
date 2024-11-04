@@ -19,6 +19,12 @@
         <br />
         <nav class="navbar">
           <ul>
+            <p>
+              <i
+                >Find <strong>Information security blogs</strong> and
+                <strong>writeups</strong> here:</i
+              >
+            </p>
             <a class="navtitle" href="/security-blog.html">
               <strong>Security Blogs<br /> </strong>
             </a>
@@ -44,28 +50,8 @@
     </header>
     <main class="contains">
       <section class="content">
-        <h1 style="margin-top: 50px; text-align: center">
-          Offensive Security Blogs
-        </h1>
-        <div class="xtitle">
-          <i
-            >Find <strong>Information security blogs</strong> and
-            <strong>writeups</strong> here:</i
-          >
-        </div>
         <div class="writeup-container">
-          <div class="writeup-box">
-            <a
-              href="#"
-              onclick="loadMarkdown(this, '/static/writeups/HTB-S-VI/Cicada/cicada-htb.md')"
-              >Cicada Write-up (HacktheBox)</a
-            >
-            <!-- a(this, '/static/writeups/Cicada/cicada-htb.md', 'cicada-htb')" for using hash-->
-            <div class="markdown-content"></div>
-            <!-- Container for displaying Markdown content -->
-          </div>
-
-          <div class="writeup-box">
+          <div class="writeup-box" style="margin-top: 50px">
             <a
               href="#"
               onclick="loadMarkdown(this, '/static/Security-Blogs/Linux_CheatSheet.md')"
@@ -73,16 +59,6 @@
             >
             <p>List of shell commands in one place</p>
             <div class="markdown-content"></div>
-          </div>
-
-          <div class="writeup-box">
-            <a
-              href="#"
-              onclick="loadMarkdown(this, '/static/writeups/HTB-S-VI/instant/instant-htb.md')"
-              >instant Write-up (HacktheBox)</a
-            >
-            <div class="markdown-content"></div>
-            <!-- Container for displaying Markdown content -->
           </div>
 
           <div class="writeup-box">
@@ -109,16 +85,6 @@
           <div class="writeup-box">
             <a
               href="#"
-              onclick="loadMarkdown(this, '/static/writeups/HTB-S-VI/chemistry/chemistry-htb.md')"
-              >Chemistry Write-up (HacktheBox)</a
-            >
-            <div class="markdown-content"></div>
-            <!-- Container for displaying Markdown content -->
-          </div>
-
-          <div class="writeup-box">
-            <a
-              href="#"
               onclick="loadMarkdown(this, '/static/Security-Blogs/Attacking-Webapps.md')"
               >Attacking Web Application</a
             >
@@ -126,9 +92,29 @@
             <div class="markdown-content"></div>
             <!-- Container for displaying Markdown content -->
           </div>
+
+          <div class="writeup-box">
+            <a
+              href="#"
+              onclick="loadMarkdown(this, '/static/Security-Blogs/API-Penetration-tesing/API-Penetration-Testing.md')"
+              >Attacking API</a
+            >
+            <p>Notes for API security assessment.</p>
+            <div class="markdown-content"></div>
+            <!-- Container for displaying Markdown content -->
+          </div>
+
+          <div class="writeup-box">
+            <a
+              href="#"
+              onclick="loadMarkdown(this, '/static/Security-Blogs/Linux_Information_Gathering.md')"
+              >Linux Information gathering</a
+            >
+            <p>Notes for Enumerating Linux System.</p>
+            <div class="markdown-content"></div>
+          </div>
         </div>
-        <div id="writeup-content"></div>
-        <!-- Container for displaying Markdown content -->
+
         <br />
         <h2 style="text-align: center">Projects</h2>
         <h3 class="ptitle">
