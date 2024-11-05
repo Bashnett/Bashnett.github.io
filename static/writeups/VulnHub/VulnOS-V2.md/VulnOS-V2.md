@@ -1,4 +1,4 @@
-### Part 1 - Enumeration:
+### Part 1: Enumeration
 
 I started with nmap scan:
 
@@ -20,7 +20,7 @@ from the directories result, i suspected it was using drupal, so i ran whatweb a
 
 ![NMAP](/static/writeups/VulnHub/VulnOS-V2.md/5.png)
 
-### Part 2 - Foothold:
+### Part 2: Foothold
 
 ##### searchsploit result:
 
@@ -42,7 +42,7 @@ vulnosadmin:x:1000:1000:vulnosadmin,,,:/home/vulnosadmin:/bin/bash
 postgres:x:107:116:PostgreSQL administrator,,,:/var/lib/postgresql:/bin/bash
 ```
 
-### Part 3 - root:
+### Part 3: root
 
 I found out it was using vulnerable Linux kernel
 

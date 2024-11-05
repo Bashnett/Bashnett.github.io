@@ -1,4 +1,4 @@
-### <span style="color: dodgerblue">System/Network Information Commands:</span>
+### <span style="color: #723d46">System/Network Information Commands:</span>
 
 #### Hostname Information
 
@@ -134,7 +134,7 @@ lshw
 dmesg -T
 ```
 
-### <span style="color: dodgerblue">USER Information:</span>
+### <span style="color: #723d46">USER Information:</span>
 
 #### Last Logged on Users
 
@@ -206,7 +206,7 @@ find / -group $group
 find / -user admin -name “*.sh”
 ```
 
-### <span style="color: dodgerblue">Privileged Access:</span>
+### <span style="color: #723d46">Privileged Access:</span>
 
 #### Find all setuid (SUID) Executables
 
@@ -328,7 +328,7 @@ cat /tmp/krb*
 find / -name password*.txt 2> /dev/null
 ```
 
-### <span style="color: dodgerblue">Services/Configuration files:</span>
+### <span style="color: #723d46">Services/Configuration files:</span>
 
 #### List Running Services / Processes / Users
 
@@ -457,7 +457,7 @@ cat /etc/httpd.conf
 find / -name *.conf 2> /dev/null
 ```
 
-### <span style="color: dodgerblue">Jobs and Tasks
+### <span style="color: #723d46">Jobs and Tasks</span>
 
 #### List Cron Jobs
 
@@ -478,7 +478,7 @@ find /etc/cron* -type f -perm -o+w -exec ls -l {} \;
 find /etc/cron* -user $user
 ```
 
-### Installed software version
+### <span style="color: #723d46">Installed software version</span>
 
 #### Get MySQL Version
 
@@ -528,7 +528,7 @@ rpm –query -all
 pkginfo
 ```
 
-### <span style="color: dodgerblue">Reverse Shells:</span>
+### <span style="color: #723d46">Reverse Shells:</span>
 
 #### Python
 
