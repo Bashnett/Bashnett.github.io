@@ -2,8 +2,8 @@
 body {
   margin: 0;
   padding: 0;
-  background-color:white;
-  color: #323232;
+  background-color:#1b1b1e;
+  color: darkgray;
   font-size: 18px;
   font-family: Arial, sans-serif;
   display: grid;
@@ -60,7 +60,7 @@ body {
   width: 200px;
   height: 100%;
   overflow-y: auto;
-  background-color: white;
+  background-color: #222225;
 }
 
 /* Main content styles */
@@ -76,7 +76,7 @@ main {
 
 /* Footer styles */
 .footer {
-  background-color: white;
+  background-color: #222225;;
   color: darkgrey;
   margin-left: 30px;
   margin-top: 0px;
@@ -192,7 +192,7 @@ main {
 
 .writeup-box p {
   margin: 10px 0;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .markdown-content {
