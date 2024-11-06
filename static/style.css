@@ -59,8 +59,10 @@ body {
 .one {
   grid-area: sidebar;
   position: fixed;
+  display:flex;
+  flex-direction: column;
   width: 230px;
-  height: 100%;
+  height: 100vh;
   overflow-y: auto;
   background-color: #222225;
 }
@@ -102,6 +104,17 @@ body {
   background-color: #555;
 }
 
+/* Footer styles */
+.sidebar-footer {
+  margin-top: auto;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  background-color: #f8f9fa; /* Match the sidebar background */
+}
+
 /* Main content styles */
 main {
   grid-area: main;
@@ -113,19 +126,6 @@ main {
   max-width: 95%;
 }
 
-/* Footer styles */
-.footer {
-  background-color: #222225;;
-  color: darkgrey;
-  margin-left: 40px;
-  margin-top: 0px;
-}
-
-.footer p {
-  margin: 0;
-  font-size: 1rem;
-}
-
 /* Navigation styles */
 .navtitle:hover {
   color: #323232;
@@ -133,6 +133,7 @@ main {
 
 .navbar {
   margin-left: -20px;
+  flex-grow: 1;
 }
 
 .navtitle {
@@ -162,6 +163,15 @@ main {
     width: 100%;
     text-align: center;
     margin: 0;
+  }
+
+  .one {
+    grid-area: sidebar;
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow-y: auto;
+    background-color: #222225;
   }
 
   .logo {
@@ -194,8 +204,10 @@ main {
     max-width: 100%;
   }
 
-  .footer {
-    display: none;
+  .sidebar-footer {
+    position: static; /* Removes footer from bottom fixed position */
+    margin-top: 0; /* Ensures no extra space above footer */
+    padding-top: 0; /* Removes padding at the top */
   }
 
   .right-sidebar{

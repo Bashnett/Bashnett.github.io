@@ -16,17 +16,7 @@
           <img src="/static/1.png" alt="Profile Picture" class="logo-image" />
         </div>
         <p class="title">Anish Basnet</p>
-        <div class="footer">
-          <p>
-            &ensp;&ensp;
-            <a href="https://twitter.com/bashERR36"
-              ><img class="fa" src="/static/twitter.svg" /></i
-            ></a>
-            <a href="https://github.com/Bashnett"
-              ><img class="fa" src="/static/github.svg" /></a
-            ><br />
-          </p>
-        </div><br/><p style="text-align: center; font-size: 16px;">
+        <br /><p style="text-align: center; font-size: 16px">
           <i
             >&ensp;Find <strong>Information security blogs</strong> and
             <strong>writeups</strong> here:</i
@@ -46,6 +36,20 @@
             <br />
           </ul>
         </nav>
+        <footer>
+          <p>
+           &ensp;&ensp;
+            <a href="https://twitter.com/bashERR36"
+              ><img class="fa" src="/static/twitter.svg" /></i
+            ></a>
+            <a href="https://github.com/Bashnett"
+              ><img class="fa" src="/static/github.svg" /></a
+            >
+            <a href="mailto:nishanbasnet3636@gmail.com"
+              ><img class="fa" src="/static/gmail.svg" /></a
+            ><br />
+          </p>
+      </footer>
       </div>
     </header>
     <main class="contains">
@@ -53,12 +57,22 @@
         <h3>Search by tags</h3>
         <a href="#" class="tag" onclick="filterByTag('all')">All</a>
         <a href="#" class="tag" onclick="filterByTag('HTB')">HTB</a>
-        <a href="#" class="tag" onclick="filterByTag('HTB-season-SIX')">HTB-season-SIX</a>
-        <a href="#" class="tag" onclick="filterByTag('Cheat-sheet')">Cheat-sheet</a>
+        <a href="#" class="tag" onclick="filterByTag('HTB-season-SIX')"
+          >HTB-season-SIX</a
+        >
+        <a href="#" class="tag" onclick="filterByTag('Cheat-sheet')"
+          >Cheat-sheet</a
+        >
         <a href="#" class="tag" onclick="filterByTag('Linux')">Linux</a>
-        <a href="#" class="tag" onclick="filterByTag('ActiveDirectory')">Active Directory</a>
-        <a href="#" class="tag" onclick="filterByTag('Api-pentest')">Api testing</a>
-        <a href="#" class="tag" onclick="filterByTag('Webapp-pentest')">Webapp testing</a>
+        <a href="#" class="tag" onclick="filterByTag('ActiveDirectory')"
+          >Active Directory</a
+        >
+        <a href="#" class="tag" onclick="filterByTag('Api-pentest')"
+          >Api testing</a
+        >
+        <a href="#" class="tag" onclick="filterByTag('Webapp-pentest')"
+          >Webapp testing</a
+        >
         <a href="#" class="tag" onclick="filterByTag('vulnhub')">vulnhub</a>
       </aside>
       <section class="content">
@@ -127,49 +141,52 @@
           </div>
 
           <div class="writeup-box" data-tag="HTB HTB-season-SIX all">
-              <a
-                href="#"
-                onclick="loadMarkdown(this, '/static/writeups/HTB-S-VI/Cicada/cicada-htb.md')"
-                >Cicada Write-up (HacktheBox)</a
-              >
-              <div class="markdown-content"></div>
-              <!-- Container for displaying Markdown content -->
+            <a
+              href="#"
+              onclick="loadMarkdown(this, '/static/writeups/HTB-S-VI/Cicada/cicada-htb.md')"
+              >Cicada Write-up (HacktheBox)</a
+            >
+            <div class="markdown-content"></div>
+            <!-- Container for displaying Markdown content -->
           </div>
-  
+
           <div class="writeup-box" data-tag="HTB HTB-season-SIX all">
-              <a
-                href="#"
-                onclick="loadMarkdown(this, '/static/writeups/HTB-S-VI/instant/instant-htb.md')"
-                >instant Write-up (HacktheBox)</a
-              >
-              <div class="markdown-content"></div>
-              <!-- Container for displaying Markdown content -->
+            <a
+              href="#"
+              onclick="loadMarkdown(this, '/static/writeups/HTB-S-VI/instant/instant-htb.md')"
+              >instant Write-up (HacktheBox)</a
+            >
+            <div class="markdown-content"></div>
+            <!-- Container for displaying Markdown content -->
           </div>
-  
+
           <div class="writeup-box" data-tag="HTB HTB-season-SIX all">
-              <a
-                href="#"
-                onclick="loadMarkdown(this, '/static/writeups/HTB-S-VI/chemistry/chemistry-htb.md')"
-                >Chemistry Write-up (HacktheBox)</a
-              >
-              <div class="markdown-content"></div>
-              <!-- Container for displaying Markdown content -->
+            <a
+              href="#"
+              onclick="loadMarkdown(this, '/static/writeups/HTB-S-VI/chemistry/chemistry-htb.md')"
+              >Chemistry Write-up (HacktheBox)</a
+            >
+            <div class="markdown-content"></div>
+            <!-- Container for displaying Markdown content -->
           </div>
 
           <div class="writeup-box" data-tag="vulnhub all">
-              <a
-                href="#"
-                onclick="loadMarkdown(this, '/static/writeups/VulnHub/VulnOS-V2.md/VulnOS-V2.md')"
-                >VulnOS-v2 (Vulnhub)</a
-              >
-              <div class="markdown-content"></div>
-              <!-- Container for displaying Markdown content -->
+            <a
+              href="#"
+              onclick="loadMarkdown(this, '/static/writeups/VulnHub/VulnOS-V2.md/VulnOS-V2.md')"
+              >VulnOS-v2 (Vulnhub)</a
+            >
+            <div class="markdown-content"></div>
+            <!-- Container for displaying Markdown content -->
           </div>
-          <div style="margin-top: 50px;" id="pagination-controls" class="pagination-controls"></div>
+          <div
+            style="margin-top: 50px"
+            id="pagination-controls"
+            class="pagination-controls"
+          ></div>
         </div>
       </section>
     </main>
-    <script src="index.js">
-    </script>
+    <script src="index.js"></script>
   </body>
 </html>
