@@ -50,9 +50,9 @@
     <main class="contains">
       <aside class="right-sidebar">
         <h3>Search by tags</h3>
-        <a href="#" class="tag" onclick="filterByTag('all')">All</a>
-        <a href="#" class="tag" onclick="filterWriteups('Cheat-sheet')">Cheat-sheet</a>
-        <a href="#" class="tag" onclick="filterWriteups('Linux')">Linux</a>
+        <a href="#" class="tag" onclick="filterByTag('all')">All</a>&ensp;
+        <a href="#" class="tag" onclick="filterWriteups('Cheat-sheet')">Cheat-sheet</a>&ensp;
+        <a href="#" class="tag" onclick="filterWriteups('Linux')">Linux</a>&ensp;
         <a href="#" class="tag" onclick="filterWriteups('ActiveDirectory')">Active Directory</a>
       </aside>
       <section class="content">
@@ -114,37 +114,6 @@
       </section>
     </main>
 
-    <script>
-      function loadMarkdown(element, file) {
-        const markdownContainer = element
-          .closest(".writeup-box")
-          .querySelector(".markdown-content");
-        if (markdownContainer.innerHTML) {
-          // If content is already displayed, clear it
-          markdownContainer.innerHTML = "";
-          return; // Exit the function
-        }
-        fetch(file)
-          .then((response) => response.text())
-          .then((markdown) => {
-            const converter = new showdown.Converter();
-            const html = converter.makeHtml(markdown);
-            markdownContainer.innerHTML = html;
-
-            element.closest(".writeup-box").scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
-          })
-          .catch((error) => console.error("Error loading markdown:", error));
-      }
-
-      function filterWriteups(tag) {
-      // Hide all writeups first
-      document.querySelectorAll('.writeup-box').forEach(box => box.style.display = 'none');
-      // Show writeups with matching data-tag attribute
-      document.querySelectorAll(`.writeup-box[data-tag*="${tag}"]`).forEach(box => box.style.display = 'block');
-    }
-    </script>
+    <script src="index.js"></script>
   </body>
 </html>
