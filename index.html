@@ -40,15 +40,30 @@
             <a class="navtitle" href="/pwned-box.html">
               <strong>Pwned-Box Writeups<br /> </strong>
             </a>
+            <a class="navtitle" href="/about.html">
+              <strong>About<br /> </strong>
+            </a>
             <br />
           </ul>
         </nav>
       </div>
     </header>
     <main class="contains">
+      <aside class="right-sidebar">
+        <h3>Search by tags</h3>
+        <a href="#" class="tag" onclick="filterByTag('all')">All</a>
+        <a href="#" class="tag" onclick="filterByTag('HTB')">HTB</a>
+        <a href="#" class="tag" onclick="filterByTag('HTB-season-SIX')">HTB-season-SIX</a>
+        <a href="#" class="tag" onclick="filterByTag('Cheat-sheet')">Cheat-sheet</a>
+        <a href="#" class="tag" onclick="filterByTag('Linux')">Linux</a>
+        <a href="#" class="tag" onclick="filterByTag('ActiveDirectory')">Active Directory</a>
+        <a href="#" class="tag" onclick="filterByTag('Api-pentest')">Api testing</a>
+        <a href="#" class="tag" onclick="filterByTag('Webapp-pentest')">Webapp testing</a>
+        <a href="#" class="tag" onclick="filterByTag('vulnhub')">vulnhub</a>
+      </aside>
       <section class="content">
         <div class="writeup-container">
-          <div class="writeup-box">
+          <div class="writeup-box" data-tag="Linux Cheat-sheet all">
             <a
               href="#"
               onclick="loadMarkdown(this, '/static/Security-Blogs/Linux_CheatSheet.md')"
@@ -58,7 +73,7 @@
             <div class="markdown-content"></div>
           </div>
 
-          <div class="writeup-box">
+          <div class="writeup-box" data-tag="ActiveDirectory all">
             <a
               href="#"
               onclick="loadMarkdown(this, '/static/Security-Blogs/Attacking-AD.md')"
@@ -69,7 +84,7 @@
             <!-- Container for displaying Markdown content -->
           </div>
 
-          <div class="writeup-box">
+          <div class="writeup-box" data-tag="HTB-season-SIX all">
             <a
               href="#"
               onclick="loadMarkdown(this, '/static/writeups/HTB-S-VI/monitors/monitors-htb.md')"
@@ -79,7 +94,7 @@
             <!-- Container for displaying Markdown content -->
           </div>
 
-          <div class="writeup-box">
+          <div class="writeup-box" data-tag="Webapp-pentest all">
             <a
               href="#"
               onclick="loadMarkdown(this, '/static/Security-Blogs/Attacking-Webapps.md')"
@@ -90,7 +105,7 @@
             <!-- Container for displaying Markdown content -->
           </div>
 
-          <div class="writeup-box">
+          <div class="writeup-box" data-tag="Api-pentest all">
             <a
               href="#"
               onclick="loadMarkdown(this, '/static/Security-Blogs/API-Penetration-tesing/API-Penetration-Testing.md')"
@@ -101,7 +116,7 @@
             <!-- Container for displaying Markdown content -->
           </div>
 
-          <div class="writeup-box">
+          <div class="writeup-box" data-tag="Linux all">
             <a
               href="#"
               onclick="loadMarkdown(this, '/static/Security-Blogs/Linux_Information_Gathering.md')"
@@ -110,62 +125,51 @@
             <p>Notes for Enumerating Linux System.</p>
             <div class="markdown-content"></div>
           </div>
+
+          <div class="writeup-box" data-tag="HTB HTB-season-SIX all">
+              <a
+                href="#"
+                onclick="loadMarkdown(this, '/static/writeups/HTB-S-VI/Cicada/cicada-htb.md')"
+                >Cicada Write-up (HacktheBox)</a
+              >
+              <div class="markdown-content"></div>
+              <!-- Container for displaying Markdown content -->
+          </div>
+  
+          <div class="writeup-box" data-tag="HTB HTB-season-SIX all">
+              <a
+                href="#"
+                onclick="loadMarkdown(this, '/static/writeups/HTB-S-VI/instant/instant-htb.md')"
+                >instant Write-up (HacktheBox)</a
+              >
+              <div class="markdown-content"></div>
+              <!-- Container for displaying Markdown content -->
+          </div>
+  
+          <div class="writeup-box" data-tag="HTB HTB-season-SIX all">
+              <a
+                href="#"
+                onclick="loadMarkdown(this, '/static/writeups/HTB-S-VI/chemistry/chemistry-htb.md')"
+                >Chemistry Write-up (HacktheBox)</a
+              >
+              <div class="markdown-content"></div>
+              <!-- Container for displaying Markdown content -->
+          </div>
+
+          <div class="writeup-box" data-tag="vulnhub all">
+              <a
+                href="#"
+                onclick="loadMarkdown(this, '/static/writeups/VulnHub/VulnOS-V2.md/VulnOS-V2.md')"
+                >VulnOS-v2 (Vulnhub)</a
+              >
+              <div class="markdown-content"></div>
+              <!-- Container for displaying Markdown content -->
+          </div>
+          <div style="margin-top: 50px;" id="pagination-controls" class="pagination-controls"></div>
         </div>
-        <br />
-        <div style="padding: 15px;">
-        <h2 style="text-align: center">Projects</h2>
-        <h3 class="ptitle">
-          Web-Sacrifice (Intentional Vulnerable Web-application)
-        </h3>
-        <p>
-          <span class="has-inline-color has-white-color"
-            >&ensp;&ensp;It is intentional vulnerable web application i
-            developed that features labs for vulnerabilities like XSS, CSRF,
-            SQLi, NOSQLi and Broken Authentication Vulnerabilities. It is made
-            using node. You can learn about Web Application penetration testing
-            and information security knowledge using Web-sacrifice. It is
-            distributed via dockerized container which makes it easier to use
-            and learn.<br /><br />You can get it from here:</span
-          >
-          <span
-            ><a
-              href="https://github.com/Bashnett/WEBSACRIFICE"
-              style="color: darkkhaki"
-              >Web-Sacrifice</a
-            ></span
-          >
-        </p>
-      </div>
       </section>
     </main>
-    <script>
-      function loadMarkdown(element, file) {
-        //function loadMarkdown(element, file, hash)
-        const markdownContainer = element
-          .closest(".writeup-box")
-          .querySelector(".markdown-content");
-        if (markdownContainer.innerHTML) {
-          // If content is already displayed, clear it
-          markdownContainer.innerHTML = "";
-          //location.hash = '';
-          return; // Exit the function
-        }
-        fetch(file)
-          .then((response) => response.text())
-          .then((markdown) => {
-            const converter = new showdown.Converter();
-            const html = converter.makeHtml(markdown);
-            markdownContainer.innerHTML = html;
-            // Update the URL to include the specific hash
-            //location.hash = hash;
-
-            element.closest(".writeup-box").scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
-          })
-          .catch((error) => console.error("Error loading markdown:", error));
-      }
+    <script src="index.js">
     </script>
   </body>
 </html>

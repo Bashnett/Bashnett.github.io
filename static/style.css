@@ -7,20 +7,20 @@ body {
   font-size: 18px;
   font-family: Arial, sans-serif;
   display: grid;
-  grid-template-columns: 180px 1fr;
+  grid-template-columns: 180px 1fr 50px;
   grid-template-areas: 
-      "sidebar main";
+      "one main rightsidebar";
 }
 
 /* Sidebar styles */
 .logo {
-  margin-left: 30px;
+  margin-left: 45px;
   grid-area: sidebar;
   padding-top: 50px;
 }
 
 .title {
-  margin-left: 40px;
+  margin-left: 50px;
   font-size: 20px;
 }
 
@@ -55,19 +55,58 @@ body {
   object-fit: cover;
 }
 
+/* Left Sidebar styles */
 .one {
+  grid-area: sidebar;
   position: fixed;
-  width: 200px;
+  width: 230px;
   height: 100%;
   overflow-y: auto;
   background-color: #222225;
+}
+
+/* Right Sidebar styles */
+.right-sidebar {
+  grid-area: right-sidebar;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 180px;
+  height: 100%;
+  background-color: #222225;
+  color: #d1d1d1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.right-sidebar h3 {
+  color: darkkhaki;
+  font-size: 18px;
+  text-align: center;
+}
+
+.right-sidebar .tag {
+  display: block;
+  padding: 8px;
+  margin-bottom: 10px;
+  background-color: #723d46;
+  color: #d1d1d1;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 16px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.right-sidebar .tag:hover {
+  background-color: #555;
 }
 
 /* Main content styles */
 main {
   grid-area: main;
   margin-left: 20px;
-  padding: 0px;
+  margin-right: 100px;
 }
 
 .content {
@@ -78,7 +117,7 @@ main {
 .footer {
   background-color: #222225;;
   color: darkgrey;
-  margin-left: 30px;
+  margin-left: 40px;
   margin-top: 0px;
 }
 
@@ -146,6 +185,7 @@ main {
 
   main {
     margin-left: 0;
+    width: 100%;
     padding: 20px 10px;
   }
 
@@ -155,6 +195,10 @@ main {
   }
 
   .footer {
+    display: none;
+  }
+
+  .right-sidebar{
     display: none;
   }
 }
@@ -168,7 +212,7 @@ main {
 }
 
 .writeup-box {
-  width: calc(100% - 40px);
+  width: calc(90% - 40px);
   padding: 20px;
   background-color: aliceblue;
   margin: 10px auto;
@@ -188,6 +232,7 @@ main {
 
 .writeup-box a:hover {
   color: #323232;
+  text-decoration: underline;
 }
 
 .writeup-box p {
@@ -199,8 +244,6 @@ main {
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
-
-/* Code block styling */
 .markdown-content pre {
   white-space: pre-wrap;
   overflow-x: auto;
@@ -213,3 +256,4 @@ main {
   max-width: 100%;
   height: auto;
 }
+

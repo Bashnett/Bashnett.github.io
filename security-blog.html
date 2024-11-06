@@ -34,6 +34,9 @@
             <a class="navtitle" href="/pwned-box.html">
               <strong>Pwned-Box Writeups</strong>
             </a>
+            <a class="navtitle" href="/index.html">
+              <strong>About<br /> </strong>
+            </a>
             <br />
           </ul>
         </nav>
@@ -41,10 +44,17 @@
     </header>
 
     <main class="contains">
+      <aside class="right-sidebar">
+        <h3>Search by tags</h3>
+        <a href="#" class="tag" onclick="filterByTag('all')">All</a>
+        <a href="#" class="tag" onclick="filterWriteups('Cheat-sheet')">Cheat-sheet</a>
+        <a href="#" class="tag" onclick="filterWriteups('Linux')">Linux</a>
+        <a href="#" class="tag" onclick="filterWriteups('ActiveDirectory')">Active Directory</a>
+      </aside>
       <section class="content">
         <h2 class="wtitle">Security Blogs</h2>
         <div class="writeup-container">
-          <div class="writeup-box">
+          <div class="writeup-box" data-tag="Linux all">
             <a
               href="#"
               onclick="loadMarkdown(this, '/static/Security-Blogs/Linux_Information_Gathering.md')"
@@ -54,7 +64,7 @@
             <div class="markdown-content"></div>
           </div>
 
-          <div class="writeup-box">
+          <div class="writeup-box" data-tag="Cheat-sheet Linux all">
             <a
               href="#"
               onclick="loadMarkdown(this, '/static/Security-Blogs/Linux_CheatSheet.md')"
@@ -64,7 +74,7 @@
             <div class="markdown-content"></div>
           </div>
 
-          <div class="writeup-box">
+          <div class="writeup-box" data-tag="ActiveDirectory all">
             <a
               href="#"
               onclick="loadMarkdown(this, '/static/Security-Blogs/Attacking-AD.md')"
@@ -75,7 +85,7 @@
             <!-- Container for displaying Markdown content -->
           </div>
 
-          <div class="writeup-box">
+          <div class="writeup-box" data-tag="Api-pentest all">
             <a
               href="#"
               onclick="loadMarkdown(this, '/static/Security-Blogs/API-Penetration-tesing/API-Penetration-Testing.md')"
@@ -86,7 +96,7 @@
             <!-- Container for displaying Markdown content -->
           </div>
 
-          <div class="writeup-box">
+          <div class="writeup-box" data-tag="Webapp-pentest all">
             <a
               href="#"
               onclick="loadMarkdown(this, '/static/Security-Blogs/Attacking-Webapps.md')"
@@ -124,6 +134,13 @@
           })
           .catch((error) => console.error("Error loading markdown:", error));
       }
+
+      function filterWriteups(tag) {
+      // Hide all writeups first
+      document.querySelectorAll('.writeup-box').forEach(box => box.style.display = 'none');
+      // Show writeups with matching data-tag attribute
+      document.querySelectorAll(`.writeup-box[data-tag*="${tag}"]`).forEach(box => box.style.display = 'block');
+    }
     </script>
   </body>
 </html>
