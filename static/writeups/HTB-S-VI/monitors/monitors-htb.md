@@ -1,5 +1,3 @@
-This is a writeup for recently expired monitorsthree machine in Hackthebox platform.
-
 ### Part 1: Enumeration
 
 As always lets start with good old nmap scan:

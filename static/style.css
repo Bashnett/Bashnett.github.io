@@ -151,6 +151,17 @@ main {
 
 }
 
+.title-date {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.date {
+  font-size: 14px;
+  color: #888;
+}
+
 /* Media query for smaller screens */
 @media (max-width: 767px) {
   body {

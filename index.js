@@ -3,33 +3,30 @@ const writeupsPerPage = 7; // Number of writeups per page
 let currentPage = 1; // Track the current page
 let currentTag = ""; // Track the selected tag
 
-function loadMarkdown(element, file) {
-    //function loadMarkdown(element, file, hash)
-    const markdownContainer = element
-      .closest(".writeup-box")
-      .querySelector(".markdown-content");
-    if (markdownContainer.innerHTML) {
-      // If content is already displayed, clear it
-      markdownContainer.innerHTML = "";
-      //location.hash = '';
-      return; // Exit the function
-    }
-    fetch(file)
+function loadMarkdown(element, file, id) {
+  const markdownContainer = element.closest(".writeup-box").querySelector(".markdown-content");
+  if (markdownContainer.innerHTML) {
+      markdownContainer.innerHTML = ""; // Clear content if already loaded
+      history.pushState(null, null, window.location.pathname); // Remove the hash from URL
+      return;
+  }
+
+  fetch(file)
       .then((response) => response.text())
       .then((markdown) => {
-        const converter = new showdown.Converter();
-        const html = converter.makeHtml(markdown);
-        markdownContainer.innerHTML = html;
-        // Update the URL to include the specific hash
-        //location.hash = hash;
-
-        element.closest(".writeup-box").scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
+          const converter = new showdown.Converter();
+          const html = converter.makeHtml(markdown);
+          markdownContainer.innerHTML = html;
+          history.pushState(null, null, `#${id}`); // Set the URL hash to the writeup ID
+          document.getElementById(id).scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+          });
       })
       .catch((error) => console.error("Error loading markdown:", error));
-  }
+}
+
+
 
   function filterWriteups(tag) {
   // Hide all writeups first
@@ -87,3 +84,17 @@ displayWriteups(); // Redisplay the writeups based on the selected tag
 
 // Initialize pagination display
 displayWriteups();
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const hash = window.location.hash.slice(1); // Remove the '#' symbol
+  if (hash) {
+      const writeupBox = document.getElementById(hash);
+      if (writeupBox) {
+          const link = writeupBox.querySelector("a");
+          const file = link.getAttribute("onclick").match(/'([^']+)'/)[1]; // Extract file path
+          loadMarkdown(link, file, hash);
+      }
+  }
+  displayWriteups(); // Initialize the writeups display
+});

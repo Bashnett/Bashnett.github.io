@@ -1,5 +1,3 @@
-This is a writeup for recently expired chemistry machine in Hackthebox platform.
-
 ### Part 1: Finding Foothold
 
 l started scanning with nmap:
