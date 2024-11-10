@@ -232,7 +232,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0px;
+  margin: 10px;
 }
 
 .writeup-box {
@@ -245,6 +245,7 @@ main {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .writeup-box a {
