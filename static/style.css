@@ -7,9 +7,9 @@ body {
   font-size: 18px;
   font-family: Arial, sans-serif;
   display: grid;
-  grid-template-columns: 180px 1fr 50px;
+  grid-template-columns: 240px 1fr 100px;
   grid-template-areas: 
-      "one main rightsidebar";
+      "sidebar main rightsidebar";
 }
 
 /* Sidebar styles */
@@ -74,7 +74,7 @@ body {
   position: fixed;
   right: 0;
   top: 0;
-  width: 240px;
+  width: 200px;
   height: 100%;
   background-color: #222225;
   color: #d1d1d1;
@@ -163,6 +163,15 @@ main {
   color: #888;
 }
 
+@media screen and (max-width: 1024px) and (min-width: 600px) {
+  .right-sidebar {
+display: none;
+  }
+  .writeup-container{
+    max-width: 100%;
+  }
+}
+
 /* Media query for smaller screens */
 @media (max-width: 767px) {
   body {
@@ -232,11 +241,11 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10px;
+  margin: 20px;
 }
 
 .writeup-box {
-  width: calc(90% - 40px);
+  width: calc(100% - 10px);
   padding: 20px;
   background-color: aliceblue;
   margin: 10px auto;
@@ -245,7 +254,6 @@ main {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 .writeup-box a {
@@ -275,6 +283,8 @@ main {
   border: 1px solid #bdb4b4;
   padding: 10px;
   border-radius: 5px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .markdown-content img {

