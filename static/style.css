@@ -245,7 +245,7 @@ display: none;
 }
 
 .writeup-box {
-  width: calc(100% - 10px);
+  width: calc(80% - 10px);
   padding: 20px;
   background-color: aliceblue;
   margin: 10px auto;
