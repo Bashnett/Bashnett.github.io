@@ -7,7 +7,7 @@ body {
   font-size: 18px;
   font-family: Arial, sans-serif;
   display: grid;
-  grid-template-columns: 240px 1fr 100px;
+  grid-template-columns: 240px 1fr 230px;
   grid-template-areas: 
       "sidebar main rightsidebar";
 }
@@ -74,7 +74,7 @@ body {
   position: fixed;
   right: 0;
   top: 0;
-  width: 200px;
+  width: 210px;
   height: 100%;
   background-color: #222225;
   color: #d1d1d1;
@@ -164,6 +164,9 @@ main {
 }
 
 @media screen and (max-width: 1024px) and (min-width: 600px) {
+  body{
+  grid-template-columns: 240px 1fr;
+  }
   .right-sidebar {
 display: none;
   }
@@ -245,7 +248,7 @@ display: none;
 }
 
 .writeup-box {
-  width: calc(80% - 10px);
+  width: calc(85%);
   padding: 20px;
   background-color: aliceblue;
   margin: 10px auto;
