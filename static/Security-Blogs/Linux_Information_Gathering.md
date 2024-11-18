@@ -74,6 +74,8 @@ smbmap -H 192.168.13.26    --> for viewing permissions
 
 smbclient \\\\192.168.13.26\\www  --> going in shares
 
+smbclient -U user \\\\192.168.13.26\\www  --> Logging with with user
+
 ```
 
 We can mount those shares as well just like nfs:

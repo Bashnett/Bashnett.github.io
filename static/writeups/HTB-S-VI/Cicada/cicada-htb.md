@@ -1,6 +1,6 @@
 ### Part one: Scanning and Enumeration
 
-Let’s begin with an nmap scan, so that we know which service are running and where to start.
+I begin with an nmap scan.
 
 ```
 nmap -sC -sV 10.10.11.27
@@ -87,7 +87,7 @@ emily can read all share except DEV and have write access in C$ share.
 
 ### Part Two: Finding Foothold
 
-Accessing c$ share using emily account and pivoting here and there we can see that there is file called user.txt in Desktop folder ‘C:\Users\emily.oscars.cicada\Desktop’ from where I am able to get user flag.
+Accessing c$ share using emily account, searching for interesting files i found a file called user.txt in Desktop folder ‘C:\Users\emily.oscars.cicada\Desktop’ from where I am able to get user flag.
 
 Using evil-winrm with emily account, I am able to get shell in the machine.
 
@@ -99,7 +99,7 @@ sudo evil-winrm -i $TAR -u emily.oscars -p ‘Q!3@Lp#M6b*7t*Vt’
 
 and using net user emily.oscars, I can see that emily is part of backup_operators group.
 
-lets keep pivoting, file called root.txt can be found on Desktop folder under Administrator directory.
+lets keep searching, I found a file called root.txt on Desktop folder under Administrator directory.
 
 ![NMAP](/static/writeups/HTB-S-VI/Cicada/12.png)
 
